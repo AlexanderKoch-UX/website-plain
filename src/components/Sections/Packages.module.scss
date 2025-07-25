@@ -1,0 +1,175 @@
+.packages {
+  padding: 80px 0;
+  background-color: #f8fafc;
+}
+
+.packagesIntro {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.introItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4b5563;
+  font-weight: 500;
+
+  i {
+    color: #2563eb;
+    font-size: 1.2rem;
+  }
+}
+
+.packagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.packageCard {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  &.starter {
+    border-top: 4px solid #10b981;
+  }
+
+  &.business {
+    border-top: 4px solid #f59e0b;
+    transform: scale(1.05);
+    z-index: 2;
+  }
+
+  &.premium {
+    border-top: 4px solid #8b5cf6;
+  }
+}
+
+.packageHeader {
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+  }
+}
+
+.packageContent {
+  padding: 0 2rem 2rem;
+}
+
+.packageFeatures {
+  list-style: none;
+  margin: 0 0 2rem 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: #4b5563;
+    line-height: 1.5;
+
+    i {
+      color: #10b981;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.packagePricing {
+  background-color: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.priceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  strong {
+    color: #1f2937;
+  }
+}
+
+.packagesFooter {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+
+  p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    i {
+      color: #2563eb;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .packagesIntro {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .packagesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .packageCard {
+    &.business {
+      transform: none;
+    }
+  }
+
+  .packageHeader,
+  .packageContent {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .packagesFooter {
+    p {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+}

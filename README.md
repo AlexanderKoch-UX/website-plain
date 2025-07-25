@@ -1,38 +1,127 @@
-# 🌐 Alexander Koch - Portfolio Website
+# Alexander Koch Portfolio - NextJS
 
-Eine moderne, responsive Portfolio-Website für Softwareentwicklung und Webdesign-Dienstleistungen.
+Ein modernes, responsives Portfolio für Alexander Koch, entwickelt mit NextJS, TypeScript und SCSS.
 
-## 🚀 Live Demo
+## 🚀 Features
 
-**Website:** [www.alexanderkoch.dev](https://www.alexanderkoch.dev)  
-**Digitale Visitenkarte:** [alexanderkoch.dev/card](https://www.alexanderkoch.dev/card)
+- **NextJS 14** mit TypeScript
+- **Responsive Design** für alle Geräte
+- **SCSS** für modulare Styles
+- **Framer Motion** für Animationen
+- **Static Export** für einfaches Hosting
+- **SEO-optimiert** mit Meta-Tags
+- **Accessibility-freundlich**
 
-## 📋 Über das Projekt
+## 📁 Projektstruktur
 
-Diese Portfolio-Website präsentiert meine Expertise als Softwareentwickler und bietet potentiellen Kunden einen umfassenden Überblick über meine Dienstleistungen, Projekte und Fähigkeiten.
+```
+nextjs-portfolio/
+├── src/
+│   ├── components/
+│   │   ├── Layout/
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   └── Layout.tsx
+│   │   └── Sections/
+│   │       ├── Hero.tsx
+│   │       ├── About.tsx
+│   │       ├── Skills.tsx
+│   │       ├── Projects.tsx
+│   │       ├── Packages.tsx
+│   │       └── Contact.tsx
+│   ├── data/
+│   │   ├── personal.ts
+│   │   ├── projects.ts
+│   │   ├── skills.ts
+│   │   └── packages.ts
+│   ├── pages/
+│   │   ├── index.tsx
+│   │   ├── impressum.tsx
+│   │   └── datenschutz.tsx
+│   ├── styles/
+│   │   ├── globals.scss
+│   │   └── Legal.module.scss
+│   └── types/
+│       └── index.ts
+├── public/
+│   ├── favicon.ico
+│   └── site.webmanifest
+├── package.json
+├── next.config.js
+└── tsconfig.json
+```
 
-### ✨ Hauptfunktionen
+## 🛠️ Installation & Setup
 
-- **Responsive Design** - Optimiert für alle Geräte (Desktop, Tablet, Mobile)
-- **Moderne UI/UX** - Sauberes, professionelles Design mit sanften Animationen
-- **Service-Pakete** - Übersichtliche Darstellung der Webentwicklungs-Dienstleistungen
-- **Kontaktformular** - Direkte Kommunikationsmöglichkeit für Anfragen
-- **SEO-optimiert** - Vollständige Suchmaschinenoptimierung
-- **Barrierefreiheit** - Integrierte Accessibility-Features
-- **Performance** - Optimierte Ladezeiten und Browser-Caching
+1. **Dependencies installieren:**
+   ```bash
+   npm install
+   ```
 
-## 🛠️ Technologie-Stack
+2. **Development Server starten:**
+   ```bash
+   npm run dev
+   ```
 
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
-- **Design:** Responsive Design, CSS Grid & Flexbox
-- **Performance:** Apache-Konfiguration mit Gzip-Kompression
-- **Sicherheit:** HTTPS, CSP, HSTS-Header
-- **SEO:** Strukturierte Daten, Meta-Tags, Sitemap
+3. **Production Build erstellen:**
+   ```bash
+   npm run build
+   ```
 
-## 📞 Kontakt & Zusammenarbeit
+4. **Static Export für Hosting:**
+   ```bash
+   npm run export
+   ```
 
-Interessiert an einer Zusammenarbeit? Kontaktieren Sie mich gerne:
+## 📦 Build für Webserver
 
-- **Website:** [alexanderkoch.dev](https://www.alexanderkoch.dev)
-- **LinkedIn:** [Alexander Koch](https://linkedin.com/in/alexander-koch-dev)
-- **GitHub:** [@AlexanderKoch-UX](https://github.com/AlexanderKoch-UX)
+Das Projekt ist so konfiguriert, dass es nach dem Build in einen `build/` Ordner exportiert wird:
+
+```bash
+npm run build
+```
+
+Der `build/` Ordner enthält alle statischen Dateien, die direkt auf einen Webserver hochgeladen werden können.
+
+## 🎨 Styling
+
+- **SCSS Modules** für komponentenbasierte Styles
+- **Responsive Design** mit Mobile-First Ansatz
+- **CSS Custom Properties** für Theming
+- **Framer Motion** für smooth Animationen
+
+## 📱 Responsive Breakpoints
+
+- **Desktop:** > 1024px
+- **Tablet:** 768px - 1024px
+- **Mobile:** < 768px
+
+## 🔧 Konfiguration
+
+### Next.js Config
+- Static Export aktiviert
+- Optimierte Bilder für statisches Hosting
+- Custom Build Directory (`build/`)
+
+### TypeScript
+- Strict Mode aktiviert
+- Path Aliases für saubere Imports
+- Moderne ES6+ Features
+
+## 📄 Seiten
+
+- **Homepage:** Vollständiges Portfolio mit allen Sektionen
+- **Impressum:** Rechtliche Informationen
+- **Datenschutz:** DSGVO-konforme Datenschutzerklärung
+
+## 🚀 Deployment
+
+1. Build erstellen: `npm run build`
+2. `build/` Ordner auf Webserver hochladen
+3. Webserver auf `index.html` als Startseite konfigurieren
+
+## 📞 Kontakt
+
+Alexander Koch  
+E-Mail: alexanderkoch@uxnetwork.eu  
+Website: https://alexanderkoch.dev

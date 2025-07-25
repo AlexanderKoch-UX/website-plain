@@ -1,0 +1,115 @@
+.about {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.aboutText {
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.aboutHighlights {
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+  }
+}
+
+.highlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  border-left: 4px solid #2563eb;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  i {
+    color: #2563eb;
+    font-size: 2rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  div {
+    flex: 1;
+
+    h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #6b7280;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .aboutContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .aboutText,
+  .aboutHighlights {
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .highlightItem {
+    padding: 1rem;
+    gap: 1rem;
+
+    i {
+      font-size: 1.5rem;
+    }
+
+    div {
+      h4 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
