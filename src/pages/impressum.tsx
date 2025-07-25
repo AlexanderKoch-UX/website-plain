@@ -57,7 +57,6 @@ const ImpressumPage: React.FC = () => {
               <ul>
                 <li><strong>Google Fonts:</strong> Zur einheitlichen Darstellung von Schriftarten</li>
                 <li><strong>Font Awesome (CDN):</strong> Für Icons und grafische Elemente</li>
-                <li><strong>Calendly:</strong> Für Terminbuchungen</li>
               </ul>
               
               <h2>Social Media Profile</h2>

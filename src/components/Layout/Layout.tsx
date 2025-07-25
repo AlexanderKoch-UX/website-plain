@@ -54,8 +54,7 @@ const Layout: React.FC<LayoutProps> = ({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
         
-        {/* Calendly CSS */}
-        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+
         
         {/* Theme Color */}
         <meta name="theme-color" content="#2563eb" />
@@ -66,12 +65,7 @@ const Layout: React.FC<LayoutProps> = ({
       <main>{children}</main>
       <Footer />
       
-      {/* Calendly JavaScript */}
-      <script
-        type="text/javascript"
-        src="https://assets.calendly.com/assets/external/widget.js"
-        async
-      />
+
     </>
   );
 };

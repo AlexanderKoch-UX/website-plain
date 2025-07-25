@@ -75,7 +75,6 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.calendlySection,
 .emailSection {
   margin-bottom: 2rem;
   padding: 1.5rem;
@@ -116,16 +115,16 @@
   }
 }
 
-.calendlyBtn {
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
 
-  &:hover {
-    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+
+.contactActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  .btn {
+    flex: 1;
+    min-width: 180px;
   }
 }
 
@@ -140,8 +139,16 @@
     padding: 1.5rem;
   }
 
-  .calendlySection,
   .emailSection {
     padding: 1rem;
+  }
+
+  .contactActions {
+    flex-direction: column;
+    
+    .btn {
+      min-width: auto;
+      width: 100%;
+    }
   }
 }

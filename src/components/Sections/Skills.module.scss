@@ -3,6 +3,37 @@
   background-color: #f8fafc;
 }
 
+.skillTreeLink {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  .treeButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    }
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+}
+
 .skillsContent {
   display: grid;
   grid-template-columns: 1fr 1fr;

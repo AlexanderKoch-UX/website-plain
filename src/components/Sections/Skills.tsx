@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { skills } from '@/data/skills';
@@ -63,6 +64,13 @@ const Skills: React.FC = () => {
           <motion.div className="section-header" variants={itemVariants}>
             <h2>Meine Skills</h2>
             <p>Technologien und Fähigkeiten, die ich beherrsche</p>
+            
+            <div className={styles.skillTreeLink}>
+              <Link href="/skills" className={styles.treeButton}>
+                <i className="fas fa-sitemap"></i>
+                Interaktiven Skill Tree erkunden
+              </Link>
+            </div>
           </motion.div>
           
           <div className={styles.skillsContent}>

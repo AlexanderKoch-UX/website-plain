@@ -23,6 +23,21 @@ export interface Skill {
   icon: string;
 }
 
+export interface SkillNode {
+  id: string;
+  name: string;
+  category: 'foundation' | 'frontend' | 'backend' | 'fullstack' | 'tools' | 'soft' | 'advanced';
+  icon: string;
+  level: number; // 1-5, where 1 is foundation and 5 is expert
+  prerequisites?: string[]; // IDs of required skills
+  description?: string;
+  children?: SkillNode[];
+  // New MindMap properties
+  direction?: 'top' | 'left' | 'right' | 'bottom';
+  distance?: number; // 1-5, distance from center
+  mindMapCategory?: 'softskills' | 'programming' | 'teamwork' | 'business';
+}
+
 export interface ContactInfo {
   email: string;
   phone: string;

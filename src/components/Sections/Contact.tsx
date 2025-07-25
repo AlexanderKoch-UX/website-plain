@@ -1,18 +1,13 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { personalInfo } from '@/data/personal';
 import styles from './Contact.module.scss';
 
-declare global {
-  interface Window {
-    Calendly: {
-      initPopupWidget: (options: { url: string }) => void;
-    };
-  }
-}
+
 
 const Contact: React.FC = () => {
   const [ref, inView] = useInView({
@@ -39,13 +34,7 @@ const Contact: React.FC = () => {
     }
   };
 
-  const handleCalendlyClick = () => {
-    if (typeof window !== 'undefined' && window.Calendly) {
-      window.Calendly.initPopupWidget({
-        url: 'https://calendly.com/alexander-koch-x2q/main'
-      });
-    }
-  };
+
 
   return (
     <section id="contact" className={styles.contact}>
@@ -98,28 +87,25 @@ const Contact: React.FC = () => {
             </motion.div>
             
             <motion.div className={styles.contactForm} variants={itemVariants}>
-              <div className={styles.calendlySection}>
-                <h3>Termin vereinbaren</h3>
-                <p>Buchen Sie direkt einen Termin für ein unverbindliches Gespräch über Ihr Projekt.</p>
-                <button
-                  onClick={handleCalendlyClick}
-                  className="btn btn-primary calendly-btn"
-                >
-                  <i className="fas fa-calendar-alt"></i>
-                  Termin buchen
-                </button>
-              </div>
-              
               <div className={styles.emailSection}>
-                <h3>Oder schreiben Sie mir</h3>
-                <p>Bevorzugen Sie E-Mail? Schreiben Sie mir direkt eine Nachricht.</p>
-                <a
-                  href={`mailto:${personalInfo.contact.email}`}
-                  className="btn btn-package premium"
-                >
-                  <i className="fas fa-envelope"></i>
-                  E-Mail senden
-                </a>
+                <h3>Schreiben Sie mir</h3>
+                <p>Ich freue mich auf Ihre Nachricht und stehe für Fragen oder Projektanfragen zur Verfügung.</p>
+                <div className={styles.contactActions}>
+                  <a
+                    href={`mailto:${personalInfo.contact.email}`}
+                    className="btn btn-package premium"
+                  >
+                    <i className="fas fa-envelope"></i>
+                    E-Mail senden
+                  </a>
+                  <Link
+                    href="/visitenkarte"
+                    className="btn btn-secondary"
+                  >
+                    <i className="fas fa-address-card"></i>
+                    Visitenkarte
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </div>

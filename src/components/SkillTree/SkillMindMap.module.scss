@@ -1,0 +1,672 @@
+// Define responsive mixins locally
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+.skillMindMap {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #0F0F23 0%, #1A1A2E 50%, #16213E 100%);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 100%;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @include respond-to(mobile) {
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  }
+
+  .header {
+    text-align: center;
+    padding: 2rem;
+    flex-shrink: 0;
+    
+    h2 {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFD700, #FFA000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      
+      @include respond-to(mobile) {
+        font-size: 2.5rem;
+      }
+      
+      @include respond-to(tablet) {
+        font-size: 3.5rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .mindMapContainer {
+    width: 100%;
+    flex: 1;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    overflow: hidden;
+    margin: 0;
+
+    @include respond-to(mobile) {
+      flex: 1;
+    }
+  }
+
+  .connectionsSvg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .connectionLine {
+    filter: url(#glow);
+    transition: all 0.3s ease;
+  }
+
+  .centerContainer {
+    z-index: 5;
+  }
+
+  .centerNode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, #FFD700, #FFA000);
+    border-radius: 50%;
+    box-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.5),
+      0 0 60px rgba(255, 215, 0, 0.3),
+      inset 0 0 20px rgba(255, 255, 255, 0.2);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 
+        0 0 40px rgba(255, 215, 0, 0.7),
+        0 0 80px rgba(255, 215, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .profileImage {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 0.5rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .centerInfo {
+      text-align: center;
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      
+      h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #FFD700;
+        margin: 0 0 0.25rem 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0;
+      }
+    }
+
+    .centerGlow {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+      animation: pulse 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+  }
+
+  .skillNode {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 3;
+    
+    background: linear-gradient(135deg, 
+      var(--skill-color, #6C5CE7) 0%, 
+      color-mix(in srgb, var(--skill-color, #6C5CE7) 80%, black 20%) 100%
+    );
+    
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.3),
+      0 0 20px color-mix(in srgb, var(--skill-color, #6C5CE7) 30%, transparent 70%);
+
+    border: 2px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      transform: scale(1.2);
+      box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 0 30px color-mix(in srgb, var(--skill-color, #6C5CE7) 50%, transparent 50%);
+      
+      .skillLabel {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .levelDots {
+        opacity: 1;
+      }
+    }
+
+    .skillIcon {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 0.25rem;
+    }
+
+    .skillLabel {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      text-align: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      white-space: nowrap;
+      z-index: 10;
+
+      .skillName {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 0.25rem;
+      }
+
+      .skillLevel {
+        display: block;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    .skillGlow {
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 50%;
+      background: radial-gradient(circle, 
+        color-mix(in srgb, var(--skill-color, #6C5CE7) 20%, transparent 80%) 0%, 
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    &:hover .skillGlow {
+      opacity: 1;
+    }
+
+    .levelDots {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      .levelDot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+
+        &.active {
+          background: var(--skill-color, #6C5CE7);
+          box-shadow: 0 0 8px color-mix(in srgb, var(--skill-color, #6C5CE7) 50%, transparent 50%);
+        }
+      }
+    }
+
+    // MindMap category-specific colors will be set via CSS custom property
+    // This is handled dynamically in the component
+  }
+
+  .levelRing {
+    opacity: 0.3;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .legend {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: 200px;
+
+    @include respond-to(mobile) {
+      position: static;
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    h4 {
+      margin: 0 0 1rem 0;
+      color: #FFD700;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .legendItem {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .legendColor {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      span {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+
+  // Modal styles (reused from SkillTree)
+  .skillModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+
+    .modalContent {
+      background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+
+      .modalCloseButton {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+          transform: scale(1.1);
+        }
+      }
+
+      .modalHeader {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        .skillIcon {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #FFD700, #FFA000);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          color: white;
+        }
+
+        h3 {
+          margin: 0 0 0.25rem 0;
+          color: white;
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+
+        .category {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 0.9rem;
+          text-transform: capitalize;
+        }
+      }
+
+      .modalBody {
+        .skillLevel {
+          margin-bottom: 1.5rem;
+
+          > span {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .levelIndicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .levelDot {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              background: rgba(255, 255, 255, 0.2);
+              transition: all 0.3s ease;
+
+              &.active {
+                background: #FFD700;
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+              }
+            }
+
+            .levelText {
+              color: #FFD700;
+              font-weight: 600;
+              margin-left: 0.5rem;
+            }
+          }
+        }
+
+        .description {
+          margin-bottom: 1.5rem;
+
+          h4 {
+            color: white;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+          }
+
+          p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin: 0;
+          }
+        }
+
+        .categoryInfo {
+          h4 {
+            color: white;
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+          }
+
+          .categoryTag {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            .categoryColor {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              flex-shrink: 0;
+            }
+
+            span {
+              color: rgba(255, 255, 255, 0.9);
+              font-size: 0.85rem;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+// Responsive adjustments
+@include respond-to(tablet) {
+  .skillMindMap {
+    .skillNode {
+      width: 70px;
+      height: 70px;
+
+      .skillIcon {
+        font-size: 1.2rem;
+      }
+    }
+
+    .centerNode {
+      width: 150px;
+      height: 150px;
+
+      .profileImage {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}
+
+@include respond-to(mobile) {
+  .skillMindMap {
+    padding: 0;
+
+    .container {
+      padding: 0;
+    }
+
+    .header {
+      padding: 1rem;
+    }
+
+    .skillNode {
+      width: 60px;
+      height: 60px;
+
+      .skillIcon {
+        font-size: 1rem;
+      }
+    }
+
+    .centerNode {
+      width: 120px;
+      height: 120px;
+
+      .profileImage {
+        width: 80px;
+        height: 80px;
+      }
+
+      .centerInfo {
+        h3 {
+          font-size: 1rem;
+        }
+
+        p {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .legend {
+      position: static;
+      margin-top: 2rem;
+    }
+
+    .skillModal {
+      padding: 1rem;
+
+      .modalContent {
+        padding: 1.5rem;
+      }
+    }
+  }
+}

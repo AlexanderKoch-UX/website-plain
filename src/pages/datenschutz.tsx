@@ -97,10 +97,6 @@ const DatenschutzPage: React.FC = () => {
               <p>Diese Seite nutzt Font Awesome für die Darstellung von Icons. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Icon-Fonts über ein Content Delivery Network (CDN) in den Browsercache, um Icons korrekt anzuzeigen.</p>
               <p>Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Font Awesome bzw. dem CDN aufnehmen. Hierdurch kann der Anbieter Kenntnis darüber erlangen, dass über Ihre IP-Adresse diese Website aufgerufen wurde. Die Nutzung von Font Awesome erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an der einheitlichen Darstellung der Icons auf meiner Website.</p>
               
-              <h3>Calendly</h3>
-              <p>Auf dieser Website ist ein Terminbuchungstool von Calendly eingebunden. Wenn Sie einen Termin buchen möchten, werden Sie zu Calendly weitergeleitet. Dabei werden Ihre Daten (Name, E-Mail-Adresse, gewählter Termin) an Calendly übertragen und dort verarbeitet.</p>
-              <p>Die Nutzung von Calendly erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effizienter Terminverwaltung).</p>
-              <p>Weitere Informationen zum Datenschutz bei Calendly finden Sie unter: <a href="https://calendly.com/privacy" target="_blank" rel="noopener noreferrer">https://calendly.com/privacy</a>.</p>
               
               <p className={styles.legalLastUpdated}>
                 <strong>Letzte Aktualisierung: </strong>Januar 2025
