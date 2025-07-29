@@ -1,13 +1,16 @@
 .errorSection {
-  padding: 120px 0 80px;
+  padding: 140px 0 100px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--secondary-600) 50%, var(--accent-500) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
 
+  // Modern animated background
   &::before {
     content: '';
     position: absolute;
@@ -15,35 +18,75 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+');
-    animation: float 20s linear infinite;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    animation: float 25s ease-in-out infinite;
+  }
+
+  // Floating geometric shapes
+  &::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: float 8s ease-in-out infinite;
+    z-index: 1;
   }
 
   @media (max-width: 768px) {
-    padding: 100px 0 60px;
+    padding: 120px 0 80px;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 
 .errorContent {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-2xl);
+  max-width: 900px;
   width: 100%;
-  padding: 60px;
+  padding: var(--space-3xl);
   text-align: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   animation: slideUp 0.8s ease-out;
 
+  // Gradient border effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+
   @media (max-width: 768px) {
-    margin: 20px;
-    padding: 40px 30px;
-    border-radius: 16px;
+    margin: var(--space-lg);
+    padding: var(--space-2xl) var(--space-xl);
+    border-radius: var(--radius-xl);
   }
 
   @media (max-width: 480px) {
-    padding: 30px 20px;
+    padding: var(--space-xl) var(--space-lg);
   }
 }
 

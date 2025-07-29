@@ -38,7 +38,7 @@ const Skills: React.FC = () => {
       if (!acc[skill.category]) {
         acc[skill.category] = [];
       }
-      acc[skill.category].push(skill);
+      acc[skill.category]?.push(skill);
       return acc;
     }, {} as Record<string, Skill[]>);
   };
@@ -64,13 +64,6 @@ const Skills: React.FC = () => {
           <motion.div className="section-header" variants={itemVariants}>
             <h2>Meine Skills</h2>
             <p>Technologien und Fähigkeiten, die ich beherrsche</p>
-            
-            <div className={styles.skillTreeLink}>
-              <Link href="/skills" className={styles.treeButton}>
-                <i className="fas fa-sitemap"></i>
-                Interaktiven Skill Tree erkunden
-              </Link>
-            </div>
           </motion.div>
           
           <div className={styles.skillsContent}>

@@ -98,13 +98,6 @@ const Contact: React.FC = () => {
                     <i className="fas fa-envelope"></i>
                     E-Mail senden
                   </a>
-                  <Link
-                    href="/visitenkarte"
-                    className="btn btn-secondary"
-                  >
-                    <i className="fas fa-address-card"></i>
-                    Visitenkarte
-                  </Link>
                 </div>
               </div>
             </motion.div>

@@ -13,12 +13,11 @@ interface NavItem {
 const navItems: NavItem[] = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'Über mich' },
+  { href: '#services', label: 'Leistungen' },
   { href: '#skills', label: 'Skills' },
-  { href: '/skills', label: 'Skill Tree' },
   { href: '#projects', label: 'Projekte' },
   { href: '#packages', label: 'Pakete' },
-  { href: '#contact', label: 'Kontakt' },
-  { href: '/visitenkarte', label: 'Visitenkarte' }
+  { href: '#contact', label: 'Kontakt' }
 ];
 
 const Navbar: React.FC = () => {
@@ -95,52 +94,58 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
-      <div className={styles.navContainer}>
-        <div className={styles.navLogo}>
-          <Link href="/">
-            <h2>Alexander Koch</h2>
-          </Link>
-        </div>
-        
-        <div className={`${styles.navMenu} ${isMenuOpen ? styles.active : ''}`}>
-          {navItems.map((item) => {
-            let isActive = false;
-            
-            if (item.href.startsWith('#')) {
-              // For hash links, only show as active if we're on the main page and the section is active
-              isActive = router.pathname === '/' && activeSection === item.href.substring(1);
-            } else {
-              // For regular links, check if the pathname matches
-              isActive = router.pathname === item.href;
-            }
-            
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`${styles.navLink} ${isActive ? styles.active : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </div>
+      <>
+        <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
+          <div className={styles.navContainer}>
+            <div className={styles.navLogo}>
+              <Link href="/">
+                <h2>Alexander Koch</h2>
+              </Link>
+            </div>
 
-        <div
-          className={`${styles.navToggle} ${isMenuOpen ? styles.active : ''}`}
-          onClick={toggleMenu}
-        >
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-        </div>
-      </div>
-    </nav>
+            <div className={`${styles.navMenu} ${isMenuOpen ? styles.active : ''}`}>
+              {navItems.map((item) => {
+                let isActive = false;
+
+                if (item.href.startsWith('#')) {
+                  // For hash links, only show as active if we're on the main page and the section is active
+                  isActive = router.pathname === '/' && activeSection === item.href.substring(1);
+                } else {
+                  // For regular links, check if the pathname matches
+                  isActive = router.pathname === item.href;
+                }
+
+                return (
+                    <a
+                        key={item.href}
+                        href={item.href}
+                        className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavClick(item.href);
+                        }}
+                    >
+                      {item.label}
+                    </a>
+                );
+              })}
+            </div>
+
+            <div
+                className={`${styles.navToggle} ${isMenuOpen ? styles.active : ''}`}
+                onClick={toggleMenu}
+            >
+              <span className={styles.bar}></span>
+              <span className={styles.bar}></span>
+              <span className={styles.bar}></span>
+            </div>
+          </div>
+        </nav>
+        <nav className={`${styles.navbar} z-0 relative`}>
+          <div className={styles.navContainer}>
+          </div>
+        </nav>
+      </>
   );
 };
 

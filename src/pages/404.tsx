@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout/Layout';
 import styles from '@/styles/Error404.module.scss';
 
 const Error404Page: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <Layout
       title="404 - Seite nicht gefunden | Alexander Koch"
@@ -21,14 +11,17 @@ const Error404Page: React.FC = () => {
       canonical="https://alexanderkoch.dev/404/"
     >
       <section className={styles.errorSection}>
-        <div className="container">
+        <div className="container perfect-center">
           <div className={styles.errorContent}>
+            {/* 404 Animation */}
             <div className={styles.errorAnimation}>
               <div className={styles.errorCode}>
                 <span className={styles.digit}>4</span>
                 <span className={styles.digit}>0</span>
                 <span className={styles.digit}>4</span>
               </div>
+              
+              {/* Floating Elements */}
               <div className={styles.errorIllustration}>
                 <div className={styles.floatingElements}>
                   <div className={styles.element}></div>
@@ -40,6 +33,7 @@ const Error404Page: React.FC = () => {
               </div>
             </div>
 
+            {/* Error Message */}
             <div className={styles.errorMessage}>
               <h1>Oops! Seite nicht gefunden</h1>
               <p>
@@ -48,56 +42,49 @@ const Error404Page: React.FC = () => {
               </p>
             </div>
 
+            {/* Action Buttons */}
             <div className={styles.errorActions}>
-              <Link href="/" className="btn btn-primary">
+              <Link href="/" className="btn btn-primary btn-lg">
                 <i className="fas fa-home"></i>
                 Zurück zur Startseite
               </Link>
               
               <button 
-                onClick={() => window.history.back()} 
-                className="btn btn-outline"
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.history.back();
+                  }
+                }} 
+                className="btn btn-secondary btn-lg"
+                style={{ border: 'none' }}
               >
                 <i className="fas fa-arrow-left"></i>
                 Zurück
               </button>
             </div>
 
+            {/* Helpful Links */}
             <div className={styles.helpfulLinks}>
               <h3>Vielleicht interessiert Sie:</h3>
+              
               <div className={styles.linkGrid}>
-                <Link href="/#about" className={styles.helpLink}>
-                  <i className="fas fa-user"></i>
-                  <span>Über mich</span>
-                </Link>
-                
-                <Link href="/#projects" className={styles.helpLink}>
-                  <i className="fas fa-code"></i>
-                  <span>Projekte</span>
-                </Link>
-                
-                <Link href="/#skills" className={styles.helpLink}>
-                  <i className="fas fa-tools"></i>
-                  <span>Fähigkeiten</span>
-                </Link>
-                
-                <Link href="/#contact" className={styles.helpLink}>
-                  <i className="fas fa-envelope"></i>
-                  <span>Kontakt</span>
-                </Link>
-                
-                <Link href="/visitenkarte" className={styles.helpLink}>
-                  <i className="fas fa-address-card"></i>
-                  <span>Visitenkarte</span>
-                </Link>
-                
-                <Link href="/#packages" className={styles.helpLink}>
-                  <i className="fas fa-box"></i>
-                  <span>Pakete</span>
-                </Link>
+                {[
+                  { href: '/ueber-mich', icon: 'fas fa-user', text: 'Über mich' },
+                  { href: '/leistungen', icon: 'fas fa-briefcase', text: 'Leistungen' },
+                  { href: '/#projects', icon: 'fas fa-code', text: 'Projekte' },
+                  { href: '/#skills', icon: 'fas fa-tools', text: 'Fähigkeiten' },
+                  { href: '/#contact', icon: 'fas fa-envelope', text: 'Kontakt' },
+                  { href: '/#packages', icon: 'fas fa-box', text: 'Pakete' }
+                ].map((link, index) => (
+                  <Link key={index} href={link.href} className={styles.helpLink}>
+                    <i className={link.icon}></i>
+                    <span>{link.text}</span>
+                  </Link>
+                ))}
               </div>
             </div>
 
+            {/* Search Suggestion */}
             <div className={styles.searchSuggestion}>
               <p>
                 <strong>Tipp:</strong> Verwenden Sie die Navigation oben, um zu den gewünschten Inhalten zu gelangen, 

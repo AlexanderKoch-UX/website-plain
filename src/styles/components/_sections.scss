@@ -1,0 +1,256 @@
+// Section Components
+// Reusable section styles for consistent layout across the portfolio
+
+// Base section style
+%section-base {
+  padding: var(--space-3xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+// Section with background gradient
+%section-gradient {
+  @extend %section-base;
+  background: linear-gradient(135deg, var(--gray-50) 0%, white 50%, var(--primary-50) 100%);
+}
+
+// Section with animated background
+%section-animated {
+  @extend %section-base;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    animation: float 15s ease-in-out infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -20%;
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+    animation: float 18s ease-in-out infinite reverse;
+  }
+}
+
+// Dark section
+%section-dark {
+  @extend %section-base;
+  background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 50%, var(--primary-900) 100%);
+  color: white;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+  }
+}
+
+// Section header styles
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  position: relative;
+  z-index: 2;
+
+  h1, h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: var(--space-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--gray-600);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  // Dark section header
+  .section--dark & {
+    h1, h2 {
+      color: white;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+// Section content wrapper
+.section-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+
+  @media (max-width: 768px) {
+    padding: 0 var(--space-lg);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 var(--space-md);
+  }
+}
+
+// Specific section classes
+.section {
+  @extend %section-base;
+
+  &--gradient {
+    @extend %section-gradient;
+  }
+
+  &--animated {
+    @extend %section-animated;
+  }
+
+  &--dark {
+    @extend %section-dark;
+  }
+
+  &--compact {
+    padding: var(--space-2xl) 0;
+  }
+
+  &--spacious {
+    padding: var(--space-4xl) 0;
+  }
+}
+
+// Hero section specific styles
+.hero-section {
+  @extend %section-animated;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: var(--space-4xl) 0;
+
+  .section-content {
+    width: 100%;
+  }
+}
+
+// Two column layout
+.section-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+// Three column layout
+.section-three-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2xl);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-2xl) 0;
+
+    &--compact {
+      padding: var(--space-xl) 0;
+    }
+
+    &--spacious {
+      padding: var(--space-3xl) 0;
+    }
+  }
+
+  .section-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-section {
+    min-height: 80vh;
+    padding: var(--space-3xl) 0;
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    &::before,
+    &::after {
+      animation: none;
+    }
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .section {
+    &--gradient {
+      background: white;
+    }
+
+    &--animated {
+      background: white;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .section-header {
+    h1, h2 {
+      color: var(--gray-900);
+      background: none;
+      -webkit-text-fill-color: initial;
+    }
+  }
+}

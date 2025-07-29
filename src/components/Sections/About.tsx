@@ -3,6 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { aboutSections } from '@/data/marketing';
+import { personalInfo } from '@/data/personal';
 import styles from './About.module.scss';
 
 const About: React.FC = () => {
@@ -41,51 +43,48 @@ const About: React.FC = () => {
         >
           <motion.div className="section-header" variants={itemVariants}>
             <h2>Über mich</h2>
-            <p>Mein Weg als Softwareentwickler</p>
+            <p>Lernen Sie Alexander Koch kennen</p>
           </motion.div>
           
-          <div className={styles.aboutContent}>
-            <motion.div className={styles.aboutText} variants={itemVariants}>
-              <h3>Wer ich bin</h3>
-              <p>
-                Ich bin 20 Jahre alt und bringe bereits über 6 Jahre Erfahrung in der Softwareentwicklung mit. 
-                Aktuell absolviere ich meine Ausbildung als Fachinformatiker für Anwendungsentwicklung und 
-                studiere parallel Informatik (Softwaresysteme) an der Westfälischen Hochschule Bocholt.
-              </p>
-              <p>
-                Meine Leidenschaft liegt in der Entwicklung moderner, benutzerfreundlicher Anwendungen. 
-                Ich habe erfolgreich eigene CMS und HQ-Systeme mit NextJS entwickelt und dabei sowohl 
-                Frontend- als auch Backend-Komponenten implementiert.
-              </p>
-            </motion.div>
-            
-            <motion.div className={styles.aboutHighlights} variants={itemVariants}>
-              <h3>Highlights</h3>
-              <div className={styles.highlightItem}>
-                <i className="fas fa-graduation-cap"></i>
-                <div>
-                  <h4>Ausbildung & Studium</h4>
-                  <p>
-                    Fachinformatiker für Anwendungsentwicklung<br />
-                    Informatik (Softwaresysteme) - Westfälische Hochschule Bocholt
-                  </p>
-                </div>
+          {/* Hero About Section with Image */}
+          <motion.div className={styles.aboutHero} variants={itemVariants}>
+            <div className={styles.aboutHeroContent}>
+              <div className={styles.aboutText}>
+                <h3>Alexander Koch</h3>
+                <p className={styles.subtitle}>Ihr vertrauensvoller Partner für moderne Weblösungen</p>
+                <p className={styles.description}>{personalInfo.description}</p>
               </div>
-              <div className={styles.highlightItem}>
-                <i className="fas fa-code"></i>
-                <div>
-                  <h4>6+ Jahre Erfahrung</h4>
-                  <p>Umfassende Erfahrung in der Entwicklung moderner Webanwendungen</p>
-                </div>
+              <div className={styles.aboutImage}>
+                <img 
+                  src={personalInfo.image} 
+                  alt={personalInfo.name}
+                />
               </div>
-              <div className={styles.highlightItem}>
-                <i className="fas fa-rocket"></i>
-                <div>
-                  <h4>Eigene Projekte</h4>
-                  <p>Erfolgreiche Entwicklung von CMS und HQ-Systemen</p>
-                </div>
-              </div>
-            </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Detailed About Sections */}
+          <div className={styles.aboutSections}>
+            {aboutSections.map((section, index) => {
+              const icons = ['fas fa-user-tie', 'fas fa-lightbulb', 'fas fa-handshake'];
+              return (
+                <motion.div 
+                  key={index} 
+                  className={styles.aboutSection}
+                  variants={itemVariants}
+                >
+                  <div className={styles.sectionContent}>
+                    <div className={styles.sectionIcon}>
+                      <i className={icons[index] || 'fas fa-star'}></i>
+                    </div>
+                    <h3>{section.title}</h3>
+                    {section.content.map((paragraph, pIndex) => (
+                      <p key={pIndex}>{paragraph}</p>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>
