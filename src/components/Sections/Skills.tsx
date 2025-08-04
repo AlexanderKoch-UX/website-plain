@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { skills } from '@/data/skills';
@@ -37,7 +38,7 @@ const Skills: React.FC = () => {
       if (!acc[skill.category]) {
         acc[skill.category] = [];
       }
-      acc[skill.category].push(skill);
+      acc[skill.category]?.push(skill);
       return acc;
     }, {} as Record<string, Skill[]>);
   };

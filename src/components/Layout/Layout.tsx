@@ -2,6 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import ScrollToTop from '../ScrollToTop';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,10 +14,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({
   children,
-  title = 'Alexander Koch - Softwareentwickler',
-  description = 'Alexander Koch (20) - Fachinformatiker für Anwendungsentwicklung mit 6+ Jahren Erfahrung. Spezialisiert auf NextJS, TypeScript, Node.js und moderne Webanwendungen.',
+  title = 'Alexander Koch - Full-Stack Entwickler & Digital Solutions Expert',
+  description = 'Ihr Partner für moderne Weblösungen. Mit über 6 Jahren Erfahrung entwickle ich maßgeschneiderte, zukunftssichere Anwendungen für Ihr Unternehmen.',
   canonical = 'https://alexanderkoch.dev'
 }) => {
+  // Automatically activate scroll animations for all pages
+  useScrollAnimation();
   return (
     <>
       <Head>
@@ -39,39 +43,38 @@ const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         
-        {/* Preconnect for Performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        {/* Fonts and stylesheets are now loaded in _document.tsx */}
         
-        {/* Stylesheets */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        />
-        
-        {/* Calendly CSS */}
-        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+
         
         {/* Theme Color */}
-        <meta name="theme-color" content="#2563eb" />
-        <meta name="msapplication-TileColor" content="#2563eb" />
+        <meta name="theme-color" content="#667eea" />
+        <meta name="msapplication-TileColor" content="#667eea" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:site_name" content="Alexander Koch Portfolio" />
+        <meta property="og:image" content={`${canonical}/android-chrome-512x512.png`} />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${canonical}/android-chrome-512x512.png`} />
+        
+        {/* Additional SEO */}
+        <meta name="author" content="Alexander Koch" />
+        <meta name="keywords" content="Alexander Koch, Full-Stack Entwickler, Webentwicklung, Next.js, TypeScript, React, Node.js, Softwareentwicklung, Vreden, Deutschland" />
       </Head>
       
       <Navbar />
       <main>{children}</main>
       <Footer />
+      <ScrollToTop />
       
-      {/* Calendly JavaScript */}
-      <script
-        type="text/javascript"
-        src="https://assets.calendly.com/assets/external/widget.js"
-        async
-      />
     </>
   );
 };

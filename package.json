@@ -5,20 +5,32 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:clean": "powershell -Command \"if (Test-Path 'build') { Remove-Item -Recurse -Force 'build' -ErrorAction SilentlyContinue }\" && next build",
+    "build:force": "powershell -Command \"Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue\" && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "test:build": "npm run type-check && npm run lint && npm run build:clean",
+    "analyze": "cross-env ANALYZE=true npm run build",
+    "validate:build": "node scripts/validate-build.js",
+    "build:validate": "npm run build:clean && npm run validate:build",
+    "deploy:check": "npm run type-check && npm run lint && npm run build:validate",
+    "clean": "powershell -Command \"if (Test-Path 'build') { Remove-Item -Recurse -Force 'build' -ErrorAction SilentlyContinue }; if (Test-Path '.next') { Remove-Item -Recurse -Force '.next' -ErrorAction SilentlyContinue }\""
   },
   "dependencies": {
+    "framer-motion": "^10.16.0",
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "framer-motion": "^10.16.0",
     "react-intersection-observer": "^9.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "critters": "^0.0.25",
+    "cross-env": "^7.0.3",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
     "sass": "^1.69.0",

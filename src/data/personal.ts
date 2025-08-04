@@ -2,8 +2,8 @@ import { PersonalInfo } from '@/types';
 
 export const personalInfo: PersonalInfo = {
   name: 'Alexander Koch',
-  title: 'Softwareentwickler',
-  description: 'Mit über 6 Jahren Erfahrung in der Softwareentwicklung entwickle ich moderne, skalierbare Anwendungen. Spezialisiert auf NextJS, TypeScript und Full-Stack-Entwicklung.',
+  title: 'Full-Stack Entwickler & Digital Solutions Expert',
+  description: 'Ihr Partner für moderne Weblösungen. Mit über 6 Jahren Erfahrung entwickle ich maßgeschneiderte, zukunftssichere Anwendungen, die Ihr Unternehmen digital voranbringen. Von der ersten Idee bis zur erfolgreichen Umsetzung - alles aus einer Hand.',
   image: '/android-chrome-512x512.png',
   contact: {
     email: 'alexanderkoch@uxnetwork.eu',
