@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from '@/components/Layout/Layout';
 import Hero from '@/components/Sections/Hero';
-import About from '@/components/Sections/About';
 import Services from '@/components/Sections/Services';
 import Skills from '@/components/Sections/Skills';
 import Projects from '@/components/Sections/Projects';
 import Testimonials from '@/components/Sections/Testimonials';
 import Packages from '@/components/Sections/Packages';
+import AdditionalServices from '@/components/Sections/AdditionalServices';
 import Contact from '@/components/Sections/Contact';
 
 const HomePage: React.FC = () => {
@@ -17,12 +17,12 @@ const HomePage: React.FC = () => {
       canonical="https://alexanderkoch.dev"
     >
       <Hero />
-      <About />
       <Services />
       <Skills />
       <Projects />
       <Testimonials />
       <Packages />
+      <AdditionalServices />
       <Contact />
     </Layout>
   );

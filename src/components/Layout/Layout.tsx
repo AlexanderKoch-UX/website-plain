@@ -4,6 +4,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollToTop from '../ScrollToTop';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { GlossaryProvider } from '@/contexts/GlossaryContext';
+import GlossaryModal from '../GlossaryModal';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -21,7 +23,7 @@ const Layout: React.FC<LayoutProps> = ({
   // Automatically activate scroll animations for all pages
   useScrollAnimation();
   return (
-    <>
+    <GlossaryProvider>
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -74,8 +76,8 @@ const Layout: React.FC<LayoutProps> = ({
       <main>{children}</main>
       <Footer />
       <ScrollToTop />
-      
-    </>
+      <GlossaryModal />
+    </GlossaryProvider>
   );
 };
 

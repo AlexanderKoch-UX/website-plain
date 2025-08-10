@@ -1,0 +1,97 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  color: var(--foreground);
+  
+  &:hover {
+    color: var(--primary-900);
+    
+    .toggleTrack {
+      background: var(--primary-100);
+    }
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+  }
+}
+
+.toggleTrack {
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  background: var(--muted);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  padding: 0.125rem;
+}
+
+.toggleThumb {
+  position: absolute;
+  left: 0.125rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: white;
+  border-radius: 50%;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  color: #f59e0b;
+  
+  &.dark {
+    left: calc(100% - 1.375rem);
+    background: var(--gray-800);
+    color: #f1c40f;
+  }
+}
+
+.icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+}
+
+// Dark mode styles
+:global(.dark-mode) {
+  .toggle {
+    &:hover {
+      color: var(--primary-300);
+      
+      .toggleTrack {
+        background: var(--gray-700);
+      }
+    }
+  }
+  
+  .toggleTrack {
+    background: var(--gray-800);
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .toggleThumb {
+    transition: none;
+  }
+  
+  .toggleTrack {
+    transition: none;
+  }
+}

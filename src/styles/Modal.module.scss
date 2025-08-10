@@ -1,0 +1,155 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.75rem;
+  }
+}
+
+.modalContent {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  
+  &.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+    max-width: none;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  padding-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  padding-right: 1rem;
+  
+  // Kleines Icon vor dem Titel
+  &::before {
+    content: "ℹ";
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: #667eea;
+    font-size: 1.1em;
+  }
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: #f5f5f5;
+    color: #333;
+  }
+  
+  &:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+  }
+}
+
+.body {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  // Styling für Links im Modal
+  a {
+    color: #667eea;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: #5a67d8;
+    }
+  }
+  
+  // Styling für Listen im Modal
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  // Styling für Code-Blöcke im Modal
+  code {
+    background-color: #f7fafc;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #2d3748;
+  }
+  
+  // Styling für Hervorhebungen im Modal
+  strong, b {
+    color: #2d3748;
+    font-weight: 600;
+  }
+}

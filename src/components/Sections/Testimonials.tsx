@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { clientTestimonials } from '@/data/testimonials';
@@ -31,6 +30,13 @@ const Testimonials: React.FC = () => {
     }
   };
 
+  // Temporär ausblenden, bis Kundenrezensionen verfügbar sind
+  const isVisible = false;
+
+  if (!isVisible) {
+    return null; // Komponente nicht rendern
+  }
+
   return (
     <section id="testimonials" className={styles.testimonials}>
       <div className={styles.container}>
@@ -44,12 +50,12 @@ const Testimonials: React.FC = () => {
           <motion.div variants={itemVariants} className={styles.header}>
             <h2>Was Kunden über mich sagen</h2>
             <p className={styles.subtitle}>
-              Vertrauen Sie auf die Erfahrungen zufriedener Kunden
+              Erfahrungen und Feedback aus abgeschlossenen Projekten
             </p>
           </motion.div>
 
           <div className={styles.testimonialsGrid}>
-            {clientTestimonials.map((testimonial, index) => (
+            {clientTestimonials.map((testimonial) => (
               <motion.div
                 key={testimonial.id}
                 variants={itemVariants}
@@ -88,19 +94,6 @@ const Testimonials: React.FC = () => {
               </motion.div>
             ))}
           </div>
-
-          <motion.div variants={itemVariants} className={styles.cta}>
-            <h3>Bereit für Ihr nächstes Projekt?</h3>
-            <p>Lassen Sie uns gemeinsam Ihre digitale Vision verwirklichen.</p>
-            <div className={styles.ctaButtons}>
-              <Link href="/leistungen" className="btn btn-primary">
-                Leistungen ansehen
-              </Link>
-              <a href="#contact" className="btn btn-secondary">
-                Kontakt aufnehmen
-              </a>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

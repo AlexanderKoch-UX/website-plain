@@ -2,7 +2,8 @@
   padding: var(--space-3xl) 0;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--gray-50) 0%, white 50%, var(--primary-50) 100%);
+  background: var(--section-bg);
+  animation: fadeIn 0.8s ease-out;
   
   // Decorative background elements
   &::before {
@@ -71,20 +72,20 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  color: var(--gray-700);
+  color: var(--text-secondary);
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--card-bg-light);
   backdrop-filter: blur(10px);
   padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: var(--shadow-md);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   transition: all var(--transition-normal);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--card-bg-hover);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--card-shadow-hover);
   }
 
   i {
@@ -122,17 +123,20 @@
 }
 
 .packageCard {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card-bg);
   backdrop-filter: blur(20px);
   border-radius: var(--radius-3xl);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
   transition: all var(--transition-normal);
   position: relative;
-  height: fit-content;
+  height: 100%;
   pointer-events: auto;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.8s ease-out;
 
   &::before {
     content: '';
@@ -163,9 +167,9 @@
   }
 
   &.business {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(255, 255, 255, 0.9);
-    box-shadow: var(--shadow-2xl);
+    background: var(--card-bg-accent);
+    border-color: var(--card-border-accent);
+    box-shadow: var(--card-shadow-accent);
     z-index: 2;
     
     &::before {
@@ -239,8 +243,15 @@
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: 700;
   color: var(--gray-900);
-  margin: 0 0 var(--space-lg) 0;
+  margin: 0 0 var(--space-xs) 0;
   line-height: 1.3;
+}
+
+.packageSubtitle {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  margin: 0 0 var(--space-md) 0;
+  font-weight: 500;
 }
 
 .packagePricing {
@@ -279,21 +290,104 @@
 
 .packageContent {
   padding: 0 var(--space-2xl) var(--space-2xl);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.packageDescription {
+  color: var(--gray-700);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.packageSections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  flex: 1;
+}
+
+.packageSection {
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    
+    i {
+      color: var(--primary-600);
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  
+  .techTag {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary-700);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all var(--transition-fast);
+    cursor: help;
+    
+    &:hover {
+      background: var(--primary-600);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}
+
+.packageIdeal {
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  margin-top: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  
+  i {
+    color: var(--primary-600);
+    font-size: 1rem;
+    margin-top: 2px;
+  }
+  
+  p {
+    color: var(--gray-700);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
 }
 
 .packageFeatures {
   list-style: none;
-  margin: 0 0 var(--space-2xl) 0;
+  margin: 0;
   padding: 0;
 
   li {
     display: flex;
     align-items: flex-start;
     gap: var(--space-md);
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
     color: var(--gray-700);
-    line-height: 1.6;
-    font-size: 0.95rem;
+    line-height: 1.5;
+    font-size: 0.9rem;
 
     &:last-child {
       margin-bottom: 0;
@@ -302,8 +396,8 @@
 }
 
 .checkIcon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background: linear-gradient(135deg, #10b981, #34d399);
   border-radius: 50%;
   display: flex;
@@ -398,21 +492,31 @@
       box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
     }
   }
+  
+  &.consulting {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+
+    &:hover {
+      box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4);
+    }
+  }
 }
 
 .packagesFooter {
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--card-bg-light);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-2xl);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   padding: var(--space-2xl);
+  animation: fadeIn 0.8s ease-out;
 
   p {
-    color: var(--gray-700);
+    color: var(--text-secondary);
     margin-bottom: var(--space-lg);
     display: flex;
     align-items: center;
@@ -448,6 +552,55 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-2xl);
     max-width: 800px;
+  }
+}
+
+// Dark Mode Styles
+:global(.dark-mode) {
+  .packages {
+    &::before {
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 50%);
+    }
+    
+    &::after {
+      background: 
+        radial-gradient(circle at 60% 40%, rgba(245, 158, 11, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+    }
+  }
+  
+  .packageCard {
+    animation: fadeIn 1s ease-out, glow 3s ease-in-out infinite alternate;
+    
+    &.business {
+      animation: fadeIn 1s ease-out, glowAccent 3s ease-in-out infinite alternate;
+    }
+  }
+  
+  .packageIcon {
+    box-shadow: 0 8px 24px rgba(96, 165, 250, 0.4);
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: var(--card-shadow), 0 0 5px rgba(59, 130, 246, 0.1);
+    }
+    to {
+      box-shadow: var(--card-shadow), 0 0 15px rgba(59, 130, 246, 0.2);
+    }
+  }
+  
+  @keyframes glowAccent {
+    from {
+      box-shadow: var(--card-shadow-accent), 0 0 5px rgba(245, 158, 11, 0.1);
+    }
+    to {
+      box-shadow: var(--card-shadow-accent), 0 0 15px rgba(245, 158, 11, 0.2);
+    }
   }
 }
 

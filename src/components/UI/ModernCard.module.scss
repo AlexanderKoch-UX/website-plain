@@ -1,0 +1,183 @@
+.card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  
+  // Variants
+  &.default {
+    background: var(--card);
+    color: var(--card-foreground);
+    box-shadow: var(--shadow-lg);
+    
+    &.hovered {
+      box-shadow: var(--shadow-xl);
+      background: var(--card-hover-bg);
+    }
+  }
+  
+  &.glass {
+    background: var(--glass-background);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    
+    &.hovered {
+      box-shadow: var(--shadow-xl);
+      background: var(--glass-background);
+      border-color: rgba(37, 99, 235, 0.3);
+    }
+  }
+  
+  &.gradient {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    box-shadow: var(--shadow-lg);
+    
+    &.hovered {
+      box-shadow: var(--shadow-xl);
+    }
+  }
+  
+  &.dark {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.9));
+    color: white;
+    box-shadow: var(--shadow-lg);
+    
+    &.hovered {
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .glowEffect {
+      background: radial-gradient(
+        circle at var(--glow-x) var(--glow-y),
+        rgba(147, 51, 234, 0.3),
+        transparent 50%
+      );
+    }
+    
+    .borderEffect {
+      border: 1px solid rgba(147, 51, 234, 0.3);
+      
+      &::before {
+        background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.5), transparent);
+      }
+    }
+  }
+  
+  // Interactive effects
+  &.interactive {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+    
+    &:not(.hovered) {
+      transform: perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1);
+    }
+  }
+  
+  // Glow effect
+  &.glow {
+    .glowEffect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at var(--glow-x) var(--glow-y),
+        rgba(37, 99, 235, 0.15),
+        transparent 50%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    &.hovered .glowEffect {
+      opacity: 1;
+    }
+  }
+  
+  // Border effect
+  &.border {
+    .borderEffect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.3), transparent);
+        transition: left 0.6s ease;
+      }
+    }
+    
+    &.hovered .borderEffect::before {
+      left: 100%;
+    }
+  }
+  
+  // Content
+  .content {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+// Dark Mode Styles
+:global(.dark-mode) {
+  .card {
+    &.default {
+      background: var(--card);
+      color: var(--card-foreground);
+      
+      &.hovered {
+        background: var(--card-hover-bg);
+      }
+    }
+    
+    &.glass {
+      background: var(--glass-background-dark);
+      border-color: var(--glass-border-dark);
+      
+      &.hovered {
+        border-color: rgba(37, 99, 235, 0.4);
+      }
+    }
+    
+    &.gradient {
+      background: linear-gradient(135deg, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.7));
+    }
+    
+    &.glow {
+      .glowEffect {
+        background: radial-gradient(
+          circle at var(--glow-x) var(--glow-y),
+          rgba(37, 99, 235, 0.25),
+          transparent 50%
+        );
+      }
+    }
+    
+    &.border {
+      .borderEffect {
+        border-color: rgba(37, 99, 235, 0.3);
+      }
+    }
+  }
+}

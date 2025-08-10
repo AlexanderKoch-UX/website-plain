@@ -85,22 +85,6 @@ const Contact: React.FC = () => {
                 ))}
               </div>
             </motion.div>
-            
-            <motion.div className={styles.contactForm} variants={itemVariants}>
-              <div className={styles.emailSection}>
-                <h3>Schreiben Sie mir</h3>
-                <p>Ich freue mich auf Ihre Nachricht und stehe für Fragen oder Projektanfragen zur Verfügung.</p>
-                <div className={styles.contactActions}>
-                  <a
-                    href={`mailto:${personalInfo.contact.email}`}
-                    className="btn btn-package premium"
-                  >
-                    <i className="fas fa-envelope"></i>
-                    E-Mail senden
-                  </a>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </motion.div>
       </div>

@@ -2,47 +2,47 @@ import { MarketingPoint, ServiceArea, AboutSection } from '@/types';
 
 export const marketingPoints: MarketingPoint[] = [
   {
-    title: 'Moderne Webtechnologien',
-    description: 'Entwicklung mit neuesten Technologien für zukunftssichere Lösungen',
+    title: 'Moderne Technologien',
+    description: 'Schnelle, zukunftssichere Weblösungen',
     icon: 'fas fa-rocket',
     benefits: [
-      'Hohe Performance und Geschwindigkeit',
-      'Responsive Design für alle Geräte',
-      'SEO-optimierte Entwicklung',
-      'Skalierbare Architektur'
+      'Hohe Performance',
+      'Responsive Design',
+      'SEO-optimiert',
+      'Skalierbar'
     ]
   },
   {
     title: 'Full-Stack Expertise',
-    description: 'Von der Datenbank bis zur Benutzeroberfläche - alles aus einer Hand',
+    description: 'Frontend bis Backend - alles aus einer Hand',
     icon: 'fas fa-layer-group',
     benefits: [
-      'Frontend und Backend Development',
-      'Datenbankdesign und -optimierung',
-      'API-Entwicklung und Integration',
-      'Komplette Projektabwicklung'
+      'Frontend & Backend',
+      'Datenbank-Optimierung',
+      'API-Integration',
+      'Komplettlösungen'
     ]
   },
   {
     title: 'Persönliche Betreuung',
-    description: 'Direkter Kontakt und individuelle Lösungen für Ihr Unternehmen',
+    description: 'Direkter Kontakt und individuelle Lösungen',
     icon: 'fas fa-handshake',
     benefits: [
-      'Persönlicher Ansprechpartner',
-      'Flexible Arbeitszeiten',
+      'Persönlicher Kontakt',
+      'Flexible Zeiten',
       'Regelmäßige Updates',
-      'Langfristige Partnerschaft'
+      'Langfristige Betreuung'
     ]
   },
   {
-    title: 'Bewährte Projektmethodik',
-    description: 'Strukturierte Herangehensweise für erfolgreiche Projekte',
+    title: 'Bewährte Methodik',
+    description: 'Strukturierte Prozesse für erfolgreiche Projekte',
     icon: 'fas fa-tasks',
     benefits: [
-      'Klare Projekt-Roadmaps',
-      'Agile Entwicklungsmethoden',
+      'Klare Roadmaps',
+      'Agile Entwicklung',
       'Transparente Kommunikation',
-      'Termintreue Umsetzung'
+      'Termintreue'
     ]
   }
 ];
@@ -50,89 +50,44 @@ export const marketingPoints: MarketingPoint[] = [
 export const serviceAreas: ServiceArea[] = [
   {
     title: 'Web Development',
-    description: 'Moderne, responsive Websites und Webanwendungen',
+    description: 'Moderne Websites & Webanwendungen',
     icon: 'fas fa-globe',
     services: [
       'Responsive Websites',
-      'E-Commerce Lösungen',
-      'Content Management Systeme',
-      'Progressive Web Apps',
+      'E-Commerce',
+      'CMS-Lösungen',
+      'Web Apps',
       'Landing Pages',
-      'Corporate Websites'
+      'Corporate Sites'
     ],
     technologies: ['Next.js', 'React', 'TypeScript', 'SCSS', 'Node.js']
   },
   {
     title: 'Backend Development',
-    description: 'Robuste Server-Architekturen und API-Entwicklung',
+    description: 'Server & API-Entwicklung',
     icon: 'fas fa-server',
     services: [
-      'REST API Development',
-      'Datenbankdesign',
-      'Server-Architektur',
-      'Cloud Integration',
-      'Performance Optimierung',
-      'Security Implementation'
+      'REST APIs',
+      'Datenbanken',
+      'Server-Setup',
+      'Cloud-Dienste',
+      'Performance',
+      'Sicherheit'
     ],
-    technologies: ['Node.js', 'Python', 'MySQL', 'REST APIs', 'Cloud Services']
+    technologies: ['Node.js', 'Python', 'MySQL', 'REST APIs', 'Cloud']
   },
   {
     title: 'Consulting & Support',
-    description: 'Strategische Beratung und langfristiger Support',
+    description: 'Beratung & langfristiger Support',
     icon: 'fas fa-lightbulb',
     services: [
-      'Technische Beratung',
+      'Tech-Beratung',
       'Code Reviews',
-      'Performance Audits',
-      'Wartung & Support',
-      'Team Mentoring',
-      'Projekt-Coaching'
+      'Performance-Checks',
+      'Wartung',
+      'Mentoring',
+      'Coaching'
     ],
-    technologies: ['Projektmanagement', 'Agile Methoden', 'Code Quality', 'Best Practices']
-  }
-];
-
-export const aboutSections: AboutSection[] = [
-  {
-    title: 'Über mich',
-    content: [
-      'Als erfahrener Softwareentwickler mit über 6 Jahren Berufserfahrung unterstütze ich Unternehmen dabei, ihre digitalen Visionen zu verwirklichen. Meine Leidenschaft liegt in der Entwicklung moderner, benutzerfreundlicher Webanwendungen, die echten Mehrwert schaffen.',
-      'Durch meine umfassende Expertise in Frontend- und Backend-Technologien kann ich Projekte ganzheitlich betreuen - von der ersten Idee bis zur erfolgreichen Umsetzung und darüber hinaus.'
-    ],
-    highlights: [
-      'Über 6 Jahre Erfahrung in der Softwareentwicklung',
-      'Spezialisierung auf moderne Webtechnologien',
-      'Full-Stack Development Expertise',
-      'Fokus auf Performance und Benutzerfreundlichkeit',
-      'Agile Arbeitsweise und transparente Kommunikation'
-    ]
-  },
-  {
-    title: 'Mein Ansatz',
-    content: [
-      'Jedes Projekt ist einzigartig. Deshalb nehme ich mir die Zeit, Ihre spezifischen Anforderungen und Ziele zu verstehen. Gemeinsam entwickeln wir eine maßgeschneiderte Lösung, die nicht nur technisch überzeugt, sondern auch Ihre Geschäftsziele unterstützt.',
-      'Dabei setze ich auf bewährte Technologien und moderne Entwicklungsmethoden, um sicherzustellen, dass Ihre Lösung nicht nur heute funktioniert, sondern auch für die Zukunft gerüstet ist.'
-    ],
-    highlights: [
-      'Individuelle Lösungskonzepte',
-      'Enge Zusammenarbeit mit dem Kunden',
-      'Fokus auf Geschäftsziele',
-      'Zukunftssichere Technologien',
-      'Kontinuierliche Verbesserung'
-    ]
-  },
-  {
-    title: 'Warum Alexander Koch?',
-    content: [
-      'Als selbstständiger Entwickler biete ich Ihnen die Flexibilität und persönliche Betreuung, die größere Agenturen oft nicht leisten können. Sie arbeiten direkt mit mir zusammen - ohne Umwege, ohne Missverständnisse.',
-      'Meine langjährige Erfahrung in verschiedenen Projekten und Branchen ermöglicht es mir, auch komplexe Herausforderungen effizient zu lösen und innovative Lösungsansätze zu entwickeln.'
-    ],
-    highlights: [
-      'Direkter, persönlicher Kontakt',
-      'Flexible und schnelle Umsetzung',
-      'Kosteneffiziente Lösungen',
-      'Branchenübergreifende Erfahrung',
-      'Langfristige Partnerschaft'
-    ]
+    technologies: ['Projektmanagement', 'Agile', 'Code Quality', 'Best Practices']
   }
 ];

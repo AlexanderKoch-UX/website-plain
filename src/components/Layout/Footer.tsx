@@ -6,54 +6,53 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} animate-fade-in`}>
 
       <div className="container">
         {/* Main footer content */}
-        <div className={styles.footerMain}>
+        <div className={`${styles.footerMain} stagger-children`}>
           {/* Brand section */}
-          <div className={styles.footerBrand}>
-            <h3 className={styles.brandName}>Alexander Koch</h3>
+          <div className={`${styles.footerBrand} fade-in-up`}>
+            <h3 className={`${styles.brandName} animate-text-glow`}>Alexander Koch</h3>
             <p className={styles.brandDescription}>
               Web Developer & UX Designer
             </p>
           </div>
 
           {/* Quick links section */}
-          <div className={styles.footerSection}>
+          <div className={`${styles.footerSection} fade-in-up`}>
             <h4 className={styles.sectionTitle}>Navigation</h4>
             <div className={styles.quickLinks}>
-              <a href="#home" className={styles.quickLink}>Home</a>
-              <a href="#about" className={styles.quickLink}>Über mich</a>
-              <a href="#services" className={styles.quickLink}>Leistungen</a>
-              <a href="#projects" className={styles.quickLink}>Projekte</a>
-              <a href="#contact" className={styles.quickLink}>Kontakt</a>
+              <a href="#home" className={`${styles.quickLink} hover-lift`}>Home</a>
+              <a href="#services" className={`${styles.quickLink} hover-lift`}>Leistungen</a>
+              <a href="#projects" className={`${styles.quickLink} hover-lift`}>Projekte</a>
+              <a href="#contact" className={`${styles.quickLink} hover-lift`}>Kontakt</a>
             </div>
           </div>
         </div>
 
         {/* Decorative separator */}
-        <div className={styles.footerDivider}>
-          <div className={styles.dividerLine}></div>
-          <div className={styles.dividerDot}></div>
-          <div className={styles.dividerLine}></div>
+        <div className={`${styles.footerDivider} animate-fade-in`}>
+          <div className={`${styles.dividerLine} animate-shimmer`}></div>
+          <div className={`${styles.dividerDot} animate-pulse`}></div>
+          <div className={`${styles.dividerLine} animate-shimmer`}></div>
         </div>
 
         {/* Bottom section */}
-        <div className={styles.footerBottom}>
+        <div className={`${styles.footerBottom} fade-in-up`}>
           <div className={styles.copyrightInfo}>
             <p>&copy; {currentYear} Alexander Koch. Alle Rechte vorbehalten.</p>
             <p className={styles.subCopyright}>
-              Erstellt mit <span className={styles.heart}>♥</span> in Deutschland
+              Erstellt mit <span className={`${styles.heart} animate-pulse`}>♥</span> in Deutschland
             </p>
           </div>
           
           <div className={styles.legalLinks}>
-            <Link href="/impressum" className={styles.legalLink}>
+            <Link href="/impressum" className={`${styles.legalLink} hover-lift`}>
               <i className="fas fa-info-circle"></i>
               Impressum
             </Link>
-            <Link href="/datenschutz" className={styles.legalLink}>
+            <Link href="/datenschutz" className={`${styles.legalLink} hover-lift`}>
               <i className="fas fa-shield-alt"></i>
               Datenschutz
             </Link>
@@ -63,9 +62,9 @@ const Footer: React.FC = () => {
 
       {/* Background decoration */}
       <div className={styles.backgroundDecoration}>
-        <div className={styles.decorationCircle}></div>
-        <div className={styles.decorationCircle}></div>
-        <div className={styles.decorationCircle}></div>
+        <div className={`${styles.decorationCircle} animate-float`}></div>
+        <div className={`${styles.decorationCircle} animate-float-slow`}></div>
+        <div className={`${styles.decorationCircle} animate-float-fast`}></div>
       </div>
     </footer>
   );

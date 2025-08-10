@@ -1,6 +1,7 @@
+
 .services {
   padding: var(--space-3xl) 0;
-  background: linear-gradient(135deg, var(--gray-50) 0%, white 50%, var(--secondary-50) 100%);
+  background: linear-gradient(135deg, #0a0a0c 0%, #141422 50%, #1a1a2e 100%);
   position: relative;
   overflow: hidden;
 
@@ -11,7 +12,7 @@
     left: -20%;
     width: 40%;
     height: 40%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
     animation: float 15s ease-in-out infinite;
   }
 
@@ -22,149 +23,25 @@
     right: -20%;
     width: 50%;
     height: 50%;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
     animation: float 18s ease-in-out infinite reverse;
   }
 }
 
-.marketingPoints {
+// Integrierte Services
+.integratedServices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
   margin-bottom: var(--space-3xl);
 }
 
-.pointsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-xl);
-  margin-top: var(--space-xl);
-}
-
-.pointCard {
-  background: rgba(255, 255, 255, 0.9);
+.serviceCard {
+  background: rgba(26, 26, 46, 0.95); // Dunklerer, kontrastreicherer Hintergrund
   backdrop-filter: blur(10px);
   border-radius: var(--radius-2xl);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--shadow-lg);
-  padding: var(--space-2xl);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: all var(--transition-normal);
-
-  // Top gradient border
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gradient-primary);
-    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-  }
-}
-
-.pointIcon {
-  width: 80px;
-  height: 80px;
-  background: var(--gradient-primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto var(--space-lg);
-  color: white;
-  font-size: 2rem;
-  box-shadow: var(--shadow-lg);
-
-  i {
-    transition: transform var(--transition-normal);
-  }
-}
-
-.pointCard:hover .pointIcon i {
-  transform: scale(1.1);
-}
-
-.pointCard h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: var(--space-md);
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.pointCard p {
-  color: var(--gray-600);
-  line-height: 1.6;
-  margin-bottom: var(--space-lg);
-}
-
-.benefitsList {
-  text-align: left;
-  background: rgba(59, 130, 246, 0.05);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-}
-
-.benefitItem {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  i {
-    color: var(--success-500);
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-
-  span {
-    color: var(--gray-700);
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-}
-
-.serviceAreas {
-  margin-top: var(--space-3xl);
-}
-
-.areasTitle {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: var(--space-xl);
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.areasGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--space-xl);
-}
-
-.areaCard {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-2xl);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--shadow-lg);
+  border: 2px solid rgba(59, 130, 246, 0.3); // Dickerer, hellerer Rand für bessere Sichtbarkeit
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 10px rgba(59, 130, 246, 0.2); // Stärkerer Schatten mit Glow
   padding: var(--space-2xl);
   position: relative;
   overflow: hidden;
@@ -177,34 +54,36 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: var(--gradient-primary);
+    height: 5px; // Dickere Linie
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6); // Hellerer, sichtbarerer Farbverlauf
     border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
   }
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px); // Stärkere Bewegung beim Hover
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(59, 130, 246, 0.4); // Stärkerer Schatten mit Glow
+    border-color: rgba(59, 130, 246, 0.5); // Hellerer Rand beim Hover
+    background: rgba(30, 30, 54, 0.95); // Leicht hellerer Hintergrund beim Hover
   }
 }
 
-.areaHeader {
+.serviceHeader {
   display: flex;
   align-items: center;
   gap: var(--space-lg);
   margin-bottom: var(--space-lg);
 }
 
-.areaIcon {
-  width: 60px;
-  height: 60px;
+.serviceIcon {
+  width: 70px;
+  height: 70px;
   background: var(--gradient-primary);
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   box-shadow: var(--shadow-md);
   flex-shrink: 0;
 
@@ -213,71 +92,114 @@
   }
 }
 
-.areaCard:hover .areaIcon i {
+.serviceCard:hover .serviceIcon i {
   transform: scale(1.1);
 }
 
-.areaHeader h4 {
+.serviceTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: var(--gradient-primary);
+  font-size: 2rem; // Größere Schrift
+  font-weight: 800; // Fettere Schrift für bessere Lesbarkeit
+  background: linear-gradient(135deg, #60a5fa, #a78bfa); // Hellerer, sichtbarerer Farbverlauf
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0;
-}
+  cursor: help;
+  letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  text-shadow: 0 2px 10px rgba(59, 130, 246, 0.4); // Subtiler Glow für bessere Lesbarkeit
 
-.areaDescription {
-  color: var(--gray-600);
-  line-height: 1.6;
-  margin-bottom: var(--space-lg);
-}
-
-.areaServices {
-  margin-bottom: var(--space-lg);
-
-  h5 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--gray-800);
-    margin-bottom: var(--space-md);
+  &:hover {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23667eea'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm1.61-9.96c-2.06-.3-3.88.97-4.43 2.79-.18.58.26 1.17.87 1.17h.2c.41 0 .74-.29.88-.67.32-.89 1.27-1.5 2.3-1.28.95.2 1.65 1.13 1.57 2.1-.1 1.34-1.62 1.63-2.45 2.88 0 .01-.01.01-.01.02-.01.02-.02.03-.03.05-.09.15-.18.32-.25.5-.01.03-.03.05-.04.08-.01.02-.01.04-.02.07-.12.34-.2.75-.2 1.25h2c0-.42.11-.77.28-1.07.02-.03.03-.06.05-.09.08-.14.18-.27.28-.39.01-.01.02-.03.03-.04.1-.12.21-.23.33-.34.96-.91 2.26-1.65 1.99-3.56-.24-1.74-1.61-3.21-3.35-3.47z'/></svg>") 12 12, auto;
+    transform: translateY(-2px); // Leichte Bewegung beim Hover
   }
+}
 
+.serviceDescription {
+  color: #ffffff; // Reinweiß für maximalen Kontrast
+  line-height: 1.7; // Erhöhter Zeilenabstand
+  margin-bottom: var(--space-xl);
+  font-size: 1.1rem; // Größere Schrift
+  font-weight: 500; // Etwas fettere Schrift für bessere Lesbarkeit
+  letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Leichter Schatten für besseren Kontrast
+}
+
+.serviceDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  background: rgba(59, 130, 246, 0.2); // Hellerer Hintergrund für besseren Kontrast
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  border: 2px solid rgba(59, 130, 246, 0.4); // Dickerer und hellerer Rand für bessere Sichtbarkeit
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(59, 130, 246, 0.2); // Schatten mit Glow-Effekt
+}
+
+.servicesList,
+.technologiesList {
+  h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem; // Größere Schrift
+    font-weight: 700; // Fettere Schrift für bessere Lesbarkeit
+    color: #ffffff; // Reinweiß für maximalen Kontrast
+    margin-bottom: var(--space-lg); // Mehr Abstand nach unten
+    position: relative;
+    letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Leichter Schatten für besseren Kontrast
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px; // Mehr Abstand
+      left: 0;
+      width: 50px; // Breitere Linie
+      height: 4px; // Dickere Linie
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6); // Hellerer, sichtbarerer Farbverlauf
+      border-radius: var(--radius-full);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); // Leichter Schatten für 3D-Effekt
+    }
+  }
+}
+
+.servicesList {
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
 
     li {
       display: flex;
       align-items: flex-start;
       gap: var(--space-sm);
-      margin-bottom: var(--space-sm);
 
       i {
-        color: var(--primary-600);
+        color: #4ade80; // Helleres Grün für bessere Sichtbarkeit
         margin-top: 2px;
         flex-shrink: 0;
+        font-size: 1.1rem; // Größeres Icon
+        text-shadow: 0 0 5px rgba(74, 222, 128, 0.5); // Glow-Effekt für bessere Sichtbarkeit
       }
 
-      span {
-        color: var(--gray-700);
-        font-size: 0.95rem;
-        line-height: 1.5;
+      .serviceTerm {
+        color: #ffffff; // Reinweiß für maximalen Kontrast
+        font-size: 1rem; // Größere Schrift
+        line-height: 1.6; // Erhöhter Zeilenabstand
+        font-weight: 500; // Etwas fettere Schrift für bessere Lesbarkeit
+        cursor: help;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Leichter Schatten für besseren Kontrast
+        
+        &:hover {
+          cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23667eea'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm1.61-9.96c-2.06-.3-3.88.97-4.43 2.79-.18.58.26 1.17.87 1.17h.2c.41 0 .74-.29.88-.67.32-.89 1.27-1.5 2.3-1.28.95.2 1.65 1.13 1.57 2.1-.1 1.34-1.62 1.63-2.45 2.88 0 .01-.01.01-.01.02-.01.02-.02.03-.03.05-.09.15-.18.32-.25.5-.01.03-.03.05-.04.08-.01.02-.01.04-.02.07-.12.34-.2.75-.2 1.25h2c0-.42.11-.77.28-1.07.02-.03.03-.06.05-.09.08-.14.18-.27.28-.39.01-.01.02-.03.03-.04.1-.12.21-.23.33-.34.96-.91 2.26-1.65 1.99-3.56-.24-1.74-1.61-3.21-3.35-3.47z'/></svg>") 12 12, auto;
+          color: #90c0ff; // Helleres Blau für bessere Sichtbarkeit
+          transform: translateY(-1px); // Leichte Bewegung beim Hover
+        }
       }
     }
-  }
-}
-
-.areaTechnologies {
-  h5 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--gray-800);
-    margin-bottom: var(--space-md);
   }
 }
 
@@ -288,42 +210,346 @@
 }
 
 .techTag {
-  background: rgba(59, 130, 246, 0.1);
-  color: var(--primary-700);
+  background: rgba(59, 130, 246, 0.25); // Hellerer Hintergrund für besseren Kontrast
+  color: #ffffff; // Reinweiß für maximalen Kontrast
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-md);
-  font-size: 0.85rem;
-  font-weight: 500;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  font-size: 0.9rem; // Größere Schrift
+  font-weight: 600; // Fettere Schrift für bessere Lesbarkeit
+  border: 1px solid rgba(59, 130, 246, 0.5); // Hellerer Rand für bessere Sichtbarkeit
   transition: all var(--transition-fast);
+  cursor: help;
+  position: relative;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Leichter Schatten für besseren Kontrast
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Leichter Schatten für 3D-Effekt
+  
+  // Kleines Fragezeichen-Icon nach dem Begriff
+  &::after {
+    content: "?";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    font-weight: bold;
+    margin-left: 0.25em;
+    color: #1a1a2e; // Dunklere Farbe für besseren Kontrast
+    background-color: #ffffff; // Reinweiß für maximalen Kontrast
+    opacity: 1; // Volle Opazität für bessere Sichtbarkeit
+    width: 1.2em; // Größeres Icon
+    height: 1.2em; // Größeres Icon
+    border-radius: 50%;
+    position: relative;
+    top: -0.5em;
+    transition: all var(--transition-normal);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); // Leichter Schatten für 3D-Effekt
+  }
 
   &:hover {
-    background: rgba(59, 130, 246, 0.15);
-    transform: translateY(-1px);
+    background: #3b82f6; // Helleres, gesättigteres Blau
+    color: white;
+    transform: translateY(-2px); // Stärkere Bewegung beim Hover
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(59, 130, 246, 0.5); // Stärkerer Schatten mit Glow
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23ffffff'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm1.61-9.96c-2.06-.3-3.88.97-4.43 2.79-.18.58.26 1.17.87 1.17h.2c.41 0 .74-.29.88-.67.32-.89 1.27-1.5 2.3-1.28.95.2 1.65 1.13 1.57 2.1-.1 1.34-1.62 1.63-2.45 2.88 0 .01-.01.01-.01.02-.01.02-.02.03-.03.05-.09.15-.18.32-.25.5-.01.03-.03.05-.04.08-.01.02-.01.04-.02.07-.12.34-.2.75-.2 1.25h2c0-.42.11-.77.28-1.07.02-.03.03-.06.05-.09.08-.14.18-.27.28-.39.01-.01.02-.03.03-.04.1-.12.21-.23.33-.34.96-.91 2.26-1.65 1.99-3.56-.24-1.74-1.61-3.21-3.35-3.47z'/></svg>") 12 12, auto;
+    
+    &::after {
+      opacity: 1;
+      background-color: white;
+      color: #3b82f6; // Helleres, gesättigteres Blau
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); // Glow-Effekt
+    }
   }
 }
 
+// Service Benefits
+.serviceBenefits {
+  h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gray-100);
+    margin-bottom: var(--space-lg);
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+    }
+  }
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.benefitItem {
+  background: rgba(20, 20, 34, 0.8);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(37, 99, 235, 0.4);
+    background: rgba(26, 26, 46, 0.9);
+  }
+}
+
+.benefitHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  
+  i {
+    font-size: 1.2rem;
+    color: var(--primary-600);
+    background: rgba(59, 130, 246, 0.1);
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}
+
+.benefitTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gray-100);
+  margin: 0;
+  cursor: help;
+  
+  &:hover {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23667eea'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm1.61-9.96c-2.06-.3-3.88.97-4.43 2.79-.18.58.26 1.17.87 1.17h.2c.41 0 .74-.29.88-.67.32-.89 1.27-1.5 2.3-1.28.95.2 1.65 1.13 1.57 2.1-.1 1.34-1.62 1.63-2.45 2.88 0 .01-.01.01-.01.02-.01.02-.02.03-.03.05-.09.15-.18.32-.25.5-.01.03-.03.05-.04.08-.01.02-.01.04-.02.07-.12.34-.2.75-.2 1.25h2c0-.42.11-.77.28-1.07.02-.03.03-.06.05-.09.08-.14.18-.27.28-.39.01-.01.02-.03.03-.04.1-.12.21-.23.33-.34.96-.91 2.26-1.65 1.99-3.56-.24-1.74-1.61-3.21-3.35-3.47z'/></svg>") 12 12, auto;
+    color: var(--primary-400);
+  }
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    i {
+      color: var(--success-500);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    
+    span {
+      color: var(--gray-300);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Allgemeine Vorteile
+.generalBenefits {
+  margin-top: var(--space-3xl);
+}
+
+.benefitsTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.5rem); // Größere Schrift
+  font-weight: 800; // Fettere Schrift
+  text-align: center;
+  margin-bottom: var(--space-2xl); // Mehr Abstand nach unten
+  background: linear-gradient(135deg, #60a5fa, #a78bfa); // Hellerer, sichtbarerer Farbverlauf
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 15px rgba(59, 130, 246, 0.4); // Subtiler Glow für bessere Lesbarkeit
+  letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  position: relative;
+  
+  // Dekorative Unterstreichung
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6); // Hellerer, sichtbarerer Farbverlauf
+    border-radius: var(--radius-full);
+  }
+}
+
+.benefitsCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+}
+
+.benefitCard {
+  background: rgba(26, 26, 46, 0.95); // Dunklerer, kontrastreicherer Hintergrund
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(59, 130, 246, 0.3); // Hellerer, sichtbarerer Rand
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); // Stärkerer Schatten
+  padding: var(--space-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px; // Dickere Linie
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6); // Hellerer, sichtbarerer Farbverlauf
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(59, 130, 246, 0.3); // Stärkerer Schatten mit Glow
+    border-color: rgba(59, 130, 246, 0.5); // Hellerer Rand beim Hover
+    background: rgba(30, 30, 54, 0.95); // Leicht hellerer Hintergrund beim Hover
+  }
+}
+
+.benefitIcon {
+  width: 70px; // Größeres Icon
+  height: 70px; // Größeres Icon
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6); // Hellerer, sichtbarerer Farbverlauf
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg); // Mehr Abstand nach unten
+  color: white;
+  font-size: 1.8rem; // Größeres Icon
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(59, 130, 246, 0.4); // Stärkerer Schatten mit Glow
+  border: 2px solid rgba(255, 255, 255, 0.1); // Subtiler weißer Rand
+  
+  i {
+    transition: transform var(--transition-normal);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); // Glow-Effekt für das Icon
+  }
+}
+
+.benefitCard:hover .benefitIcon {
+  transform: translateY(-5px); // Leichte Bewegung nach oben
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 130, 246, 0.6); // Stärkerer Schatten mit Glow
+  
+  i {
+    transform: scale(1.15); // Stärkere Skalierung
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7); // Stärkerer Glow-Effekt
+  }
+}
+
+.benefitCardTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem; // Größere Schrift
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  background: linear-gradient(135deg, #60a5fa, #a78bfa); // Hellerer, sichtbarerer Farbverlauf
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: help;
+  text-shadow: 0 2px 10px rgba(59, 130, 246, 0.3); // Subtiler Glow für bessere Lesbarkeit
+  letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  
+  &:hover {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23667eea'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2zm1.61-9.96c-2.06-.3-3.88.97-4.43 2.79-.18.58.26 1.17.87 1.17h.2c.41 0 .74-.29.88-.67.32-.89 1.27-1.5 2.3-1.28.95.2 1.65 1.13 1.57 2.1-.1 1.34-1.62 1.63-2.45 2.88 0 .01-.01.01-.01.02-.01.02-.02.03-.03.05-.09.15-.18.32-.25.5-.01.03-.03.05-.04.08-.01.02-.01.04-.02.07-.12.34-.2.75-.2 1.25h2c0-.42.11-.77.28-1.07.02-.03.03-.06.05-.09.08-.14.18-.27.28-.39.01-.01.02-.03.03-.04.1-.12.21-.23.33-.34.96-.91 2.26-1.65 1.99-3.56-.24-1.74-1.61-3.21-3.35-3.47z'/></svg>") 12 12, auto;
+    transform: translateY(-2px); // Leichte Bewegung beim Hover
+  }
+}
+
+.benefitCard p {
+  color: #ffffff; // Reinweiß für maximalen Kontrast
+  line-height: 1.7; // Erhöhter Zeilenabstand
+  font-size: 1.05rem; // Noch größere Schrift
+  margin-bottom: 0; // Kein unterer Abstand
+  font-weight: 500; // Etwas fettere Schrift für bessere Lesbarkeit
+  letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Leichter Schatten für besseren Kontrast
+}
+
 // Responsive Design
-@media (max-width: 768px) {
-  .pointsGrid,
-  .areasGrid {
+@media (max-width: 1024px) {
+  .serviceDetails {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
   }
+  
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .servicesList ul {
+    grid-template-columns: 1fr;
+  }
+}
 
-  .pointCard,
-  .areaCard {
+@media (max-width: 768px) {
+  .benefitsCards {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .serviceCard {
     padding: var(--space-xl);
   }
-
-  .areaHeader {
+  
+  .serviceHeader {
     flex-direction: column;
     text-align: center;
     gap: var(--space-md);
   }
-
-  .areaIcon {
+  
+  .serviceIcon {
     margin: 0 auto;
+  }
+  
+  .serviceTitle {
+    text-align: center;
+  }
+  
+  .serviceDetails,
+  .serviceBenefits {
+    padding: var(--space-lg);
+  }
+  
+  .servicesList h4,
+  .technologiesList h4,
+  .serviceBenefits h4 {
+    text-align: center;
+    
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }
 
@@ -331,22 +557,38 @@
   .services {
     padding: var(--space-2xl) 0;
   }
-
-  .pointCard,
-  .areaCard {
+  
+  .serviceCard {
     padding: var(--space-lg);
   }
-
-  .pointIcon {
+  
+  .serviceIcon {
     width: 60px;
     height: 60px;
     font-size: 1.5rem;
   }
-
-  .areaIcon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+  
+  .serviceTitle {
+    font-size: 1.5rem;
+  }
+  
+  .serviceDetails,
+  .serviceBenefits {
+    padding: var(--space-md);
+  }
+  
+  .benefitItem {
+    padding: var(--space-md);
+  }
+  
+  .benefitHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-sm);
+  }
+  
+  .benefitTitle {
+    text-align: center;
   }
 }
 

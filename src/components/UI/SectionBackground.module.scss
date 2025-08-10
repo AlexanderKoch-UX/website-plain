@@ -1,0 +1,233 @@
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  animation: fadeIn 1s ease-out;
+  
+  // Variants with animated gradients
+  &.variant-default {
+    background: linear-gradient(135deg, rgba(249, 250, 251, 0.8) 0%, rgba(243, 244, 246, 0.8) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  &.variant-blue {
+    background: linear-gradient(135deg, rgba(239, 246, 255, 0.8) 0%, rgba(219, 234, 254, 0.8) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  &.variant-purple {
+    background: linear-gradient(135deg, rgba(250, 245, 255, 0.8) 0%, rgba(243, 232, 255, 0.8) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  &.variant-gradient {
+    background: linear-gradient(135deg, rgba(239, 246, 255, 0.8) 0%, rgba(243, 232, 255, 0.8) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  &.variant-light {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  &.variant-dark {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.95) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  // Animated Patterns
+  &.pattern-dots {
+    .pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px), 
+                        radial-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px, 25px 25px;
+      background-position: 0 0, 10px 10px;
+      opacity: 0.3;
+      transition: all var(--transition-normal);
+      animation: backgroundMove 30s ease-in-out infinite;
+    }
+  }
+  
+  &.pattern-grid {
+    .pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(to right, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.4;
+      transition: all var(--transition-normal);
+      animation: float 20s ease-in-out infinite;
+    }
+  }
+  
+  &.pattern-waves {
+    .pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(
+          45deg, 
+          rgba(37, 99, 235, 0.03) 0, 
+          rgba(37, 99, 235, 0.03) 1px, 
+          transparent 1px, 
+          transparent 10px
+        ),
+        repeating-linear-gradient(
+          -45deg, 
+          rgba(147, 51, 234, 0.03) 0, 
+          rgba(147, 51, 234, 0.03) 1px, 
+          transparent 1px, 
+          transparent 10px
+        );
+      opacity: 0.4;
+      transition: all var(--transition-normal);
+      animation: backgroundMove 30s ease-in-out infinite;
+    }
+  }
+  
+  // Animated Glow effect
+  &.glow {
+    .glowEffect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.15) 0%, transparent 40%);
+      filter: blur(60px);
+      opacity: 0.6;
+      transition: all var(--transition-normal);
+      animation: float 15s ease-in-out infinite;
+    }
+  }
+  
+  // Animated Overlay
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(5px);
+    transition: all var(--transition-normal);
+    animation: fadeIn 1.5s ease-out;
+  }
+  
+  // Dark variant specific styles with animations
+  &.variant-dark {
+    .pattern {
+      opacity: 0.2;
+      animation-duration: 25s;
+    }
+    
+    .overlay {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.05) 100%);
+    }
+    
+    .glowEffect {
+      opacity: 0.3;
+      animation-duration: 20s;
+    }
+  }
+}
+
+// Dark Mode Styles
+:global(.dark-mode) {
+  .background {
+    &.variant-default {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.8) 0%, rgba(31, 41, 55, 0.8) 100%);
+    }
+    
+    &.variant-blue {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(29, 78, 216, 0.8) 100%);
+    }
+    
+    &.variant-purple {
+      background: linear-gradient(135deg, rgba(88, 28, 135, 0.8) 0%, rgba(107, 33, 168, 0.8) 100%);
+    }
+    
+    &.variant-gradient {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(88, 28, 135, 0.8) 100%);
+    }
+    
+    &.variant-light {
+      background: rgba(31, 41, 55, 0.9);
+    }
+    
+    &.pattern-dots {
+      .pattern {
+        background-image: radial-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px), 
+                          radial-gradient(rgba(168, 85, 247, 0.2) 1px, transparent 1px);
+        opacity: 0.2;
+      }
+    }
+    
+    &.pattern-grid {
+      .pattern {
+        background-image: 
+          linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+        opacity: 0.2;
+      }
+    }
+    
+    &.pattern-waves {
+      .pattern {
+        background-image: 
+          repeating-linear-gradient(
+            45deg, 
+            rgba(59, 130, 246, 0.07) 0, 
+            rgba(59, 130, 246, 0.07) 1px, 
+            transparent 1px, 
+            transparent 10px
+          ),
+          repeating-linear-gradient(
+            -45deg, 
+            rgba(168, 85, 247, 0.07) 0, 
+            rgba(168, 85, 247, 0.07) 1px, 
+            transparent 1px, 
+            transparent 10px
+          );
+        opacity: 0.2;
+      }
+    }
+    
+    &.glow {
+      .glowEffect {
+        background: 
+          radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 40%),
+          radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 40%);
+        opacity: 0.4;
+      }
+    }
+    
+    .overlay {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.1) 100%);
+    }
+  }
+}

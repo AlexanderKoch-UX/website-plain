@@ -126,7 +126,67 @@
   }
 }
 
-// Animation utility classes
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.7);
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(37, 99, 235, 0.3);
+  }
+  50% {
+    border-color: rgba(37, 99, 235, 0.8);
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(37, 99, 235, 0.7);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes blurIn {
+  0% {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateIn {
+  0% {
+    transform: rotate(-10deg) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+// Animation utility classes - ALWAYS ACTIVE
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -164,25 +224,47 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, #f0f0f0 0px, #e0e0e0 40px, #f0f0f0 80px);
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.05) 0px, rgba(37, 99, 235, 0.1) 40px, rgba(37, 99, 235, 0.05) 80px);
   background-size: 200px;
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
-// Hover animations
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-border-glow {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+.animate-text-glow {
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+.animate-blur-in {
+  animation: blurIn 0.8s ease-out forwards;
+}
+
+.animate-rotate-in {
+  animation: rotateIn 0.8s ease-out forwards;
+}
+
+// Hover animations - ENHANCED
 .hover-lift {
-  transition: transform var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
   }
 }
 
 .hover-scale {
-  transition: transform var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 
   &:hover {
     transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
   }
 }
 
@@ -190,7 +272,7 @@
   transition: transform var(--transition-normal);
 
   &:hover {
-    transform: rotate(5deg);
+    transform: rotate(5deg) scale(1.02);
   }
 }
 
@@ -198,11 +280,51 @@
   transition: box-shadow var(--transition-normal);
 
   &:hover {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.4);
   }
 }
 
-// Stagger animations for lists
+.hover-border-glow {
+  transition: border-color var(--transition-normal);
+  
+  &:hover {
+    border-color: rgba(37, 99, 235, 0.8) !important;
+  }
+}
+
+.hover-text-glow {
+  transition: text-shadow var(--transition-normal);
+  
+  &:hover {
+    text-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+  }
+}
+
+// Ripple effect
+.ripple {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+  }
+  
+  &:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+  }
+}
+
+// Stagger animations for lists - ENHANCED
 .stagger-children {
   > * {
     opacity: 0;
@@ -210,21 +332,22 @@
     animation: slideInUp 0.6s ease forwards;
   }
 
-  @for $i from 1 through 10 {
+  @for $i from 1 through 20 {
     > *:nth-child(#{$i}) {
       animation-delay: #{$i * 0.1}s;
     }
   }
 }
 
-// Loading animations
+// Loading animations - ENHANCED
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid rgba(59, 130, 246, 0.1);
+  border: 4px solid rgba(37, 99, 235, 0.1);
   border-left: 4px solid var(--primary-600);
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
 }
 
 .loading-dots {
@@ -240,6 +363,7 @@
     background: var(--primary-600);
     border-radius: 50%;
     animation: pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
   }
 
   &::before {
@@ -253,10 +377,11 @@
   animation-delay: 1s;
 }
 
-// Parallax effect
+// Parallax effect - ENHANCED
 .parallax {
   transform: translateZ(0);
   will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 // Smooth scroll behavior
@@ -264,73 +389,147 @@
   scroll-behavior: smooth;
 }
 
-// Reduced motion preferences
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+// High performance animations
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
 
+// Intersection observer animations - ALWAYS ACTIVE
+.fade-in-up {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.6s ease;
+}
+
+.fade-in-left {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: all 0.6s ease;
+}
+
+.fade-in-right {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: all 0.6s ease;
+}
+
+// Apply animations to all elements that should have them
+.section, .card, .btn, .hero, img, .icon, .section-header, .divider-gradient {
+  &:not(.no-animation) {
+    transition: all var(--transition-normal);
+  }
+}
+
+// Apply animations to all sections
+.section {
+  &:not(.no-animation) {
+    animation: fadeIn 1s ease-out;
+    
+    .section-header {
+      animation: slideUp 1.2s ease-out;
+    }
+    
+    .card, .btn, img, .icon {
+      @extend .stagger-children;
+    }
+  }
+}
+
+// Apply animations to all cards
+.card, .card-modern {
+  &:not(.no-animation) {
+    transition: all var(--transition-normal);
+    @extend .hover-lift;
+    
+    &:hover {
+      @extend .animate-glow-pulse;
+    }
+  }
+}
+
+// Apply animations to all buttons
+.btn, .button-modern {
+  &:not(.no-animation) {
+    transition: all var(--transition-normal);
+    @extend .ripple;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Apply animations to all images
+img {
+  &:not(.no-animation) {
+    transition: all var(--transition-normal);
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+// Apply animations to all icons
+.icon {
+  &:not(.no-animation) {
+    transition: all var(--transition-normal);
+    
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+      color: var(--primary-400);
+    }
+  }
+}
+
+// Apply animations to all section headers
+.section-header {
+  &:not(.no-animation) {
+    h2 {
+      @extend .animate-text-glow;
+      
+      &::after {
+        @extend .animate-glow-pulse;
+      }
+    }
+  }
+}
+
+// Apply animations to all dividers
+.divider-gradient {
+  &:not(.no-animation) {
+    @extend .animate-shimmer;
+  }
+}
+
+// Ensure all animations are active regardless of prefers-reduced-motion
+// This overrides the default behavior to ensure animations are always on
+html {
   .animate-float,
   .animate-float-slow,
   .animate-float-fast,
   .animate-bounce,
   .animate-pulse,
   .animate-spin,
-  .animate-scale {
-    animation: none;
-  }
-
-  .hover-lift,
-  .hover-scale,
-  .hover-rotate {
-    &:hover {
-      transform: none;
-    }
-  }
-}
-
-// High performance animations
-.gpu-accelerated {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-// Intersection observer animations
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-
-  &.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.6s ease;
-
-  &.in-view {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.fade-in-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: all 0.6s ease;
-
-  &.in-view {
-    opacity: 1;
-    transform: translateX(0);
+  .animate-scale,
+  .animate-shimmer,
+  .animate-glow-pulse,
+  .animate-border-glow,
+  .animate-text-glow,
+  .animate-blur-in,
+  .animate-rotate-in,
+  .stagger-children > *,
+  .fade-in-up,
+  .fade-in-left,
+  .fade-in-right {
+    animation-play-state: running !important;
   }
 }

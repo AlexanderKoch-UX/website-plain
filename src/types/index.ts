@@ -8,6 +8,29 @@ export interface Package {
   };
 }
 
+export interface ServicePackage {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  priceRange: string;
+  timeframe: string;
+  features: string[];
+  technologies: string[];
+  deliverables: string[];
+  ideal: string;
+  icon: string;
+}
+
+export interface AdditionalService {
+  id: string;
+  title: string;
+  description: string;
+  priceInfo: string;
+  features: string[];
+  icon: string;
+}
+
 export interface Project {
   id?: string;
   title: string;

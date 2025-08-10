@@ -12,7 +12,6 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { href: '#home', label: 'Home' },
-  { href: '#about', label: 'Über mich' },
   { href: '#services', label: 'Leistungen' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projekte' },
@@ -95,15 +94,15 @@ const Navbar: React.FC = () => {
 
   return (
       <>
-        <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
+        <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''} animate-fade-in`}>
           <div className={styles.navContainer}>
-            <div className={styles.navLogo}>
-              <Link href="/">
-                <h2>Alexander Koch</h2>
+            <div className={`${styles.navLogo} animate-fade-in`}>
+              <Link href="/" className="hover-scale">
+                <h2 className="animate-text-glow">Alexander Koch</h2>
               </Link>
             </div>
 
-            <div className={`${styles.navMenu} ${isMenuOpen ? styles.active : ''}`}>
+            <div className={`${styles.navMenu} ${isMenuOpen ? styles.active : ''} stagger-children`}>
               {navItems.map((item) => {
                 let isActive = false;
 
@@ -119,7 +118,7 @@ const Navbar: React.FC = () => {
                     <a
                         key={item.href}
                         href={item.href}
-                        className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                        className={`${styles.navLink} ${isActive ? styles.active : ''} hover-lift`}
                         onClick={(e) => {
                           e.preventDefault();
                           handleNavClick(item.href);
@@ -132,12 +131,12 @@ const Navbar: React.FC = () => {
             </div>
 
             <div
-                className={`${styles.navToggle} ${isMenuOpen ? styles.active : ''}`}
+                className={`${styles.navToggle} ${isMenuOpen ? styles.active : ''} hover-scale`}
                 onClick={toggleMenu}
             >
-              <span className={styles.bar}></span>
-              <span className={styles.bar}></span>
-              <span className={styles.bar}></span>
+              <span className={`${styles.bar} animate-fade-in`}></span>
+              <span className={`${styles.bar} animate-fade-in`} style={{ animationDelay: '0.1s' }}></span>
+              <span className={`${styles.bar} animate-fade-in`} style={{ animationDelay: '0.2s' }}></span>
             </div>
           </div>
         </nav>

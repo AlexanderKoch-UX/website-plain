@@ -3,10 +3,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useGlossary } from '@/contexts/GlossaryContext';
+import { skillExplanations } from '@/data/skillExplanations';
 import { serviceAreas, marketingPoints } from '@/data/marketing';
+import AutoGlossary from '@/components/AutoGlossary';
 import styles from './Services.module.scss';
 
 const Services: React.FC = () => {
+  const { showExplanation } = useGlossary();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -40,6 +44,20 @@ const Services: React.FC = () => {
     }
   };
 
+  // Funktion zum Finden der Erklärung für einen Begriff
+  const getExplanation = (term: string): string => {
+    const explanation = skillExplanations.find(
+      item => item.term.toLowerCase() === term.toLowerCase()
+    );
+    return explanation?.explanation || `${term} ist ein Begriff aus dem Bereich der Webentwicklung.`;
+  };
+
+  // Funktion zum Anzeigen der Erklärung
+  const handleTermClick = (term: string) => {
+    const explanation = getExplanation(term);
+    showExplanation(term, explanation);
+  };
+
   return (
     <section id="services" className={styles.services}>
       <div className="container">
@@ -49,88 +67,31 @@ const Services: React.FC = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {/* Section Header */}
-          <motion.div className="section-header" variants={itemVariants}>
-            <h2>Meine Leistungen</h2>
-            <p>Umfassende Webentwicklung für Ihr Unternehmen</p>
-          </motion.div>
-
-          {/* Marketing Points */}
-          <motion.div className={styles.marketingPoints} variants={itemVariants}>
-            <div className={styles.pointsGrid}>
+          {/* Allgemeine Vorteile - Zusammenfassung */}
+          <motion.div className={styles.generalBenefits} variants={itemVariants}>
+            <motion.h3 className={styles.benefitsTitle} variants={itemVariants}>
+              Warum mit mir zusammenarbeiten?
+            </motion.h3>
+            <div className={styles.benefitsCards}>
               {marketingPoints.map((point, index) => (
                 <motion.div
                   key={index}
-                  className={styles.pointCard}
+                  className={styles.benefitCard}
                   variants={cardVariants}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <div className={styles.pointIcon}>
+                  <div className={styles.benefitIcon}>
                     <i className={point.icon}></i>
                   </div>
-                  <h3>{point.title}</h3>
-                  <p>{point.description}</p>
-                  {point.benefits && (
-                    <div className={styles.benefitsList}>
-                      {point.benefits.map((benefit, bIndex) => (
-                        <div key={bIndex} className={styles.benefitItem}>
-                          <i className="fas fa-check"></i>
-                          <span>{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Service Areas */}
-          <motion.div className={styles.serviceAreas} variants={itemVariants}>
-            <motion.h3 className={styles.areasTitle} variants={itemVariants}>
-              Service-Bereiche
-            </motion.h3>
-            <div className={styles.areasGrid}>
-              {serviceAreas.map((area, index) => (
-                <motion.div
-                  key={index}
-                  className={styles.areaCard}
-                  variants={cardVariants}
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div className={styles.areaHeader}>
-                    <div className={styles.areaIcon}>
-                      <i className={area.icon}></i>
-                    </div>
-                    <h4>{area.title}</h4>
-                  </div>
-                  
-                  <p className={styles.areaDescription}>{area.description}</p>
-                  
-                  <div className={styles.areaServices}>
-                    <h5>Services</h5>
-                    <ul>
-                      {area.services.map((service, sIndex) => (
-                        <li key={sIndex}>
-                          <i className="fas fa-arrow-right"></i>
-                          <span>{service}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {area.technologies && (
-                    <div className={styles.areaTechnologies}>
-                      <h5>Technologien</h5>
-                      <div className={styles.techTags}>
-                        {area.technologies.map((tech, tIndex) => (
-                          <span key={tIndex} className={styles.techTag}>
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <h4 
+                    onClick={() => handleTermClick(point.title)}
+                    className={styles.benefitCardTitle}
+                  >
+                    {point.title}
+                  </h4>
+                  <p>
+                    <AutoGlossary>{point.description}</AutoGlossary>
+                  </p>
                 </motion.div>
               ))}
             </div>

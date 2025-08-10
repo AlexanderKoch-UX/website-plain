@@ -1,0 +1,42 @@
+// Dark Mode Aktivierung
+// Diese Datei aktiviert automatisch den Dark Mode für die gesamte Website
+
+// Automatisch Dark Mode aktivieren
+html {
+  // Immer Dark Mode aktivieren
+  &:not(.dark-mode) {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  
+  // Füge die dark-mode Klasse hinzu
+  &:not(.dark-mode) {
+    @extend .dark-mode;
+  }
+}
+
+// Stelle sicher, dass der Body die richtigen Farben hat
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+// Füge die dark-mode Klasse zum HTML-Element hinzu
+// Dies wird durch JavaScript in _app.tsx beim Laden der Seite ausgeführt
+// Hier nur ein Kommentar, da JavaScript nicht in SCSS ausgeführt werden kann
+
+// Transition für sanfte Farbübergänge
+body, 
+body * {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
+}
+
+// Deaktiviere Übergänge, wenn prefers-reduced-motion aktiviert ist
+@media (prefers-reduced-motion) {
+  body, 
+  body * {
+    transition: none !important;
+  }
+}

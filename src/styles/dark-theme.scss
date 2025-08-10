@@ -1,0 +1,1344 @@
+// Dark Theme Styles
+// Diese Datei definiert umfassende Stile für das Dark Theme
+
+// Verbesserte Scrollbar für Dark Mode
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--card);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-500); // Hellere Farbe für bessere Sichtbarkeit
+  border: 3px solid var(--card);
+  border-radius: 10px;
+  
+  &:hover {
+    background: var(--gray-400); // Noch hellere Farbe beim Hover für bessere Sichtbarkeit
+  }
+}
+
+// Selection color
+::selection {
+  background: rgba(37, 99, 235, 0.7);
+  color: white;
+}
+
+// Karten
+.card-modern {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    border-color: var(--primary-500);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.4);
+    transform: translateY(-5px);
+  }
+}
+
+// Buttons
+.button-modern {
+  background: linear-gradient(135deg, var(--primary-700), var(--primary-900));
+  
+  &:hover {
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+  }
+}
+
+// Eingabefelder
+.input-modern {
+  background: var(--input);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  transition: all var(--transition-normal);
+  
+  &:focus {
+    background: var(--card);
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+  }
+}
+
+// Badges
+.badge-modern {
+  background: rgba(37, 99, 235, 0.2);
+  color: var(--primary-400);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+// Divider
+.divider-gradient {
+  background: linear-gradient(to right, transparent, rgba(37, 99, 235, 0.5), rgba(147, 51, 234, 0.5), transparent);
+  height: 2px;
+  opacity: 0.8;
+}
+
+// Verbesserte Section Headers mit höherem Kontrast
+.section-header {
+  h2 {
+    background: linear-gradient(135deg, #3b82f6, #a855f7); // Hellere, gesättigtere Farben
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3); // Subtiler Glow für bessere Lesbarkeit
+    
+    &::after {
+      opacity: 1; // Volle Opazität für bessere Sichtbarkeit
+      background: linear-gradient(to right, #3b82f6, #a855f7); // Hellere, gesättigtere Farben
+      animation: gradientShift 3s ease infinite;
+      background-size: 200% 200%;
+      height: 3px; // Dickere Linie für bessere Sichtbarkeit
+    }
+  }
+  
+  p {
+    color: var(--text-secondary); // Hellerer Text für bessere Lesbarkeit
+    font-size: 1.1em; // Etwas größer für bessere Lesbarkeit
+  }
+}
+
+// Glasmorphismus
+.glass {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+// Verbesserte Sektionen für Dark Mode mit verschiedenen Hintergrundanimationen
+.section {
+  background: var(--section-bg);
+  position: relative;
+  overflow: hidden;
+  
+  // Standardhintergrund mit Nebel-Effekt
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 70% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(30px);
+    opacity: 0.7;
+    animation: fogShift 25s ease-in-out infinite;
+  }
+  
+  // Alternierende Sektion mit Wellen-Effekt
+  &.section-alt {
+    background: var(--section-bg-alt);
+    
+    &::before {
+      background-image: 
+        linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.05) 50%, transparent 100%),
+        linear-gradient(225deg, transparent 0%, rgba(168, 85, 247, 0.05) 50%, transparent 100%);
+      background-size: 200% 200%, 200% 200%;
+      filter: none;
+      animation: waveShift 15s ease-in-out infinite;
+    }
+  }
+  
+  // Spezielle Sektionen mit verschiedenen Hintergrundeffekten
+  &.grid-section::before {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+    filter: none;
+    animation: gridShift 20s linear infinite;
+  }
+  
+  &.dots-section::before {
+    background-image: 
+      radial-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
+      radial-gradient(rgba(168, 85, 247, 0.15) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px;
+    background-position: 0 0, 20px 20px;
+    filter: none;
+    animation: dotsGlow 4s ease-in-out infinite;
+  }
+  
+  &.lines-section::before {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(59, 130, 246, 0.05) 25%, 
+      rgba(168, 85, 247, 0.05) 50%, 
+      rgba(59, 130, 246, 0.05) 75%, 
+      transparent 100%);
+    background-size: 200% 100%;
+    filter: none;
+    animation: lineFlow 15s linear infinite;
+  }
+  
+  &.particles-section::before {
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 90% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 30%);
+    filter: none;
+    animation: particleFloat 20s ease-in-out infinite;
+  }
+}
+
+// Verbesserte Karten für Dark Mode mit höherem Kontrast und Animationen
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  
+  // Verbesserte Typografie innerhalb von Karten
+  h3, h4 {
+    color: #ffffff; // Reinweiß für Überschriften
+    margin-bottom: 0.5rem;
+    font-weight: 700; // Fettere Schrift für bessere Lesbarkeit
+    letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Leichter Schatten für besseren Kontrast
+  }
+  
+  p {
+    color: #ffffff; // Reinweiß für maximalen Kontrast
+    line-height: 1.7; // Erhöhter Zeilenabstand für bessere Lesbarkeit
+    font-size: 1.05rem; // Größere Schrift
+    font-weight: 400; // Normale Schriftstärke
+    letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  }
+  
+  // Subtiler Hintergrundeffekt
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+  }
+  
+  // Alle Inhalte über dem Hintergrundeffekt
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  // Stärkere visuelle Hervorhebung beim Hover
+  &:hover {
+    box-shadow: var(--shadow-xl), 0 0 25px rgba(59, 130, 246, 0.5);
+    border-color: rgba(59, 130, 246, 0.6); // Helleres, gesättigteres Blau mit höherer Opazität
+    transform: translateY(-7px);
+    
+    // Verstärkter Hintergrundeffekt beim Hover
+    &::before {
+      opacity: 0.8;
+      animation: fogShift 10s ease-in-out infinite;
+    }
+    
+    // Subtiler Glow-Effekt
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+      opacity: 0;
+      z-index: -1;
+      animation: fadeIn 0.3s forwards;
+    }
+  }
+  
+  // Spezielle Kartentypen
+  &.card-primary {
+    border-top: 4px solid rgba(59, 130, 246, 0.8);
+  }
+  
+  &.card-accent {
+    border-top: 4px solid rgba(168, 85, 247, 0.8);
+  }
+  
+  &.card-success {
+    border-top: 4px solid rgba(74, 222, 128, 0.8);
+  }
+}
+
+// Verbesserte Buttons für Dark Mode mit höherem Kontrast und Animationen
+.btn {
+  font-weight: 700; // Fettere Schrift für bessere Lesbarkeit
+  letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  position: relative;
+  overflow: hidden;
+  
+  // Ripple-Effekt für alle Buttons
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+  }
+  
+  &:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+  }
+  
+  &.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #2563eb); // Hellere, gesättigtere Farben
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5), 0 0 5px rgba(59, 130, 246, 0.3); // Stärkerer Schatten mit Glow
+    color: #ffffff; // Reinweiß für Text
+    border: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Leichter Schatten für besseren Kontrast
+    
+    &:hover {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6); // Noch hellere Farben beim Hover
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6), 0 0 10px rgba(59, 130, 246, 0.4); // Stärkerer Schatten mit Glow
+      transform: translateY(-3px); // Stärkere Bewegung für besseres Feedback
+    }
+    
+    &:active {
+      transform: translateY(1px); // Eindrücken beim Klicken
+      box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4), 0 0 5px rgba(59, 130, 246, 0.2); // Schwächerer Schatten beim Klicken
+    }
+  }
+  
+  &.btn-secondary {
+    background: #2a2a50; // Dunklerer, aber noch sichtbarer Hintergrund mit mehr Blau
+    color: #ffffff; // Reinweiß für Text
+    border: 1px solid rgba(59, 130, 246, 0.4); // Bläulicher Rand für bessere Sichtbarkeit
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Stärkerer Schatten
+    
+    &:hover {
+      background: #3b82f6; // Helles Blau beim Hover
+      color: white;
+      border-color: #3b82f6;
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5), 0 0 8px rgba(59, 130, 246, 0.3); // Stärkerer Schatten mit Glow
+      transform: translateY(-3px); // Stärkere Bewegung für besseres Feedback
+    }
+    
+    &:active {
+      transform: translateY(1px); // Eindrücken beim Klicken
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); // Schwächerer Schatten beim Klicken
+    }
+  }
+  
+  &.btn-ghost {
+    color: #ffffff; // Reinweiß für maximalen Kontrast
+    background: rgba(255, 255, 255, 0.05); // Leicht sichtbarer Hintergrund
+    backdrop-filter: blur(5px); // Leichter Blur-Effekt
+    
+    &:hover {
+      background: rgba(59, 130, 246, 0.2); // Bläulicher Hintergrund beim Hover
+      color: #ffffff; // Reinweiß für maximalen Kontrast
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); // Leichter Schatten
+      transform: translateY(-2px); // Leichte Bewegung für besseres Feedback
+    }
+    
+    &:active {
+      transform: translateY(1px); // Eindrücken beim Klicken
+    }
+  }
+  
+  &.btn-outline {
+    border: 2px solid #3b82f6; // Helleres, gesättigteres Blau
+    color: #ffffff; // Reinweiß für maximalen Kontrast
+    background: transparent;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2); // Leichter Glow
+    
+    &:hover {
+      background: #3b82f6; // Helles Blau beim Hover
+      color: white;
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3); // Stärkerer Schatten mit Glow
+      transform: translateY(-3px); // Stärkere Bewegung für besseres Feedback
+    }
+    
+    &:active {
+      transform: translateY(1px); // Eindrücken beim Klicken
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); // Schwächerer Schatten beim Klicken
+    }
+  }
+  
+  // Spezielle Button-Varianten
+  &.btn-accent {
+    background: linear-gradient(135deg, #a855f7, #8b5cf6); // Lila Farbverlauf
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.5), 0 0 5px rgba(168, 85, 247, 0.3); // Lila Schatten mit Glow
+    
+    &:hover {
+      background: linear-gradient(135deg, #c084fc, #a855f7); // Hellerer Lila Farbverlauf
+      box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6), 0 0 10px rgba(168, 85, 247, 0.4); // Stärkerer Lila Schatten mit Glow
+    }
+  }
+  
+  &.btn-success {
+    background: linear-gradient(135deg, #4ade80, #22c55e); // Grüner Farbverlauf
+    box-shadow: 0 4px 15px rgba(74, 222, 128, 0.5), 0 0 5px rgba(74, 222, 128, 0.3); // Grüner Schatten mit Glow
+    
+    &:hover {
+      background: linear-gradient(135deg, #86efac, #4ade80); // Hellerer Grüner Farbverlauf
+      box-shadow: 0 8px 25px rgba(74, 222, 128, 0.6), 0 0 10px rgba(74, 222, 128, 0.4); // Stärkerer Grüner Schatten mit Glow
+    }
+  }
+}
+
+// Ripple-Animation für Buttons
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+// Verbesserte Formulare für Dark Mode mit höherem Kontrast und Animationen
+input, textarea, select {
+  background: #1a1a3a; // Dunklerer, aber noch sichtbarer Hintergrund mit mehr Blau
+  color: #ffffff; // Reinweiß für Text
+  border: 1px solid rgba(59, 130, 246, 0.3); // Bläulicher Rand für bessere Sichtbarkeit
+  border-radius: 8px; // Stärker abgerundete Ecken
+  padding: 0.85rem 1.2rem; // Mehr Padding für bessere Lesbarkeit
+  font-size: 1.05rem; // Größere Schrift für bessere Lesbarkeit
+  transition: all var(--transition-normal);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.1); // Subtiler Schatten für 3D-Effekt
+  letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  
+  &:hover {
+    border-color: rgba(59, 130, 246, 0.5); // Hellerer Rand beim Hover
+    background: #1e1e46; // Leicht hellerer Hintergrund beim Hover
+  }
+  
+  &:focus {
+    border-color: #3b82f6; // Helleres, gesättigteres Blau
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3); // Stärkerer Schatten mit Glow
+    background: #2a2a56; // Hellerer Hintergrund im Fokus für bessere Sichtbarkeit
+    outline: none; // Entfernt den Standard-Fokus-Outline
+    transform: translateY(-1px); // Leichte Bewegung für besseres Feedback
+  }
+  
+  &::placeholder {
+    color: #a5b4fc; // Hellerer, bläulicher Platzhaltertext für bessere Sichtbarkeit
+    opacity: 0.7; // Leicht transparent
+  }
+  
+  // Verbesserte Lesbarkeit für Eingabefelder
+  &[type="text"],
+  &[type="email"],
+  &[type="password"],
+  &[type="search"],
+  &[type="url"],
+  &[type="tel"] {
+    letter-spacing: 0.02em; // Stärker erhöhter Buchstabenabstand
+  }
+  
+  // Verbesserte Lesbarkeit für Textbereiche
+  &[type="textarea"], textarea {
+    line-height: 1.7; // Erhöhter Zeilenabstand
+    min-height: 120px; // Mindesthöhe für bessere Benutzbarkeit
+    resize: vertical; // Nur vertikales Vergrößern/Verkleinern erlauben
+  }
+  
+  // Verbesserte Lesbarkeit für Auswahlfelder
+  select {
+    appearance: none; // Entfernt den Standard-Pfeil
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%233b82f6' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px 16px;
+    padding-right: 2.5rem; // Platz für den Pfeil
+  }
+  
+  // Verbesserte Checkboxen und Radiobuttons
+  &[type="checkbox"], &[type="radio"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid rgba(59, 130, 246, 0.5);
+    background: #1a1a3a;
+    position: relative;
+    vertical-align: middle;
+    appearance: none;
+    padding: 0;
+    margin-right: 0.5rem;
+    
+    &:checked {
+      background: #3b82f6;
+      border-color: #3b82f6;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+      }
+    }
+  }
+  
+  &[type="checkbox"]:checked::after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  &[type="radio"] {
+    border-radius: 50%;
+    
+    &:checked::after {
+      top: 3px;
+      left: 3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+    }
+  }
+  
+  // Verbesserte Datumseingabefelder
+  &[type="date"], &[type="time"], &[type="datetime-local"] {
+    padding-right: 1rem;
+    
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(0.8) sepia(1) saturate(5) hue-rotate(180deg); // Blaues Kalendersymbol
+    }
+  }
+}
+
+// Verbesserte Tabellen für Dark Mode mit höherem Kontrast und Animationen
+table {
+  border: 1px solid rgba(59, 130, 246, 0.3); // Bläulicher Rand für bessere Sichtbarkeit
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px; // Stärker abgerundete Ecken
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 10px rgba(59, 130, 246, 0.2); // Stärkerer Schatten mit Glow
+  width: 100%; // Volle Breite
+  margin: 1.5rem 0; // Abstand oben und unten
+  background: #14142c; // Dunklerer Hintergrund für besseren Kontrast
+  position: relative; // Für Hintergrundeffekte
+  
+  // Subtiler Hintergrundeffekt
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  // Tabellenkopf
+  thead {
+    border-bottom: 2px solid rgba(59, 130, 246, 0.4); // Dickerer, bläulicher Rand für bessere Sichtbarkeit
+    position: relative; // Für Schatten
+    
+    // Subtiler Schatten unter dem Tabellenkopf
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px;
+      height: 5px;
+      background: linear-gradient(to bottom, rgba(59, 130, 246, 0.2), transparent);
+      pointer-events: none;
+    }
+  }
+  
+  th {
+    background: #1e1e46; // Dunklerer, aber noch sichtbarer Hintergrund mit mehr Blau
+    color: #ffffff; // Reinweiß für Text
+    font-weight: 700; // Fettere Schrift für bessere Lesbarkeit
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1.2rem 1.5rem; // Mehr Padding für bessere Lesbarkeit
+    text-align: left;
+    position: relative;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Leichter Schatten für besseren Kontrast
+    
+    // Sortierbare Tabellenkopfzellen
+    &.sortable {
+      cursor: pointer;
+      padding-right: 2.5rem; // Platz für das Sortiersymbol
+      
+      &::after {
+        content: '↕';
+        position: absolute;
+        right: 1rem;
+        opacity: 0.5;
+        transition: all var(--transition-normal);
+      }
+      
+      &:hover::after {
+        opacity: 1;
+      }
+      
+      &.sorted-asc::after {
+        content: '↑';
+        opacity: 1;
+      }
+      
+      &.sorted-desc::after {
+        content: '↓';
+        opacity: 1;
+      }
+    }
+  }
+  
+  // Tabellenkörper
+  tbody {
+    position: relative; // Für Animationen
+    
+    tr {
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2); // Hellerer, bläulicher Rand für bessere Sichtbarkeit
+      transition: all var(--transition-normal);
+      position: relative; // Für Hover-Effekte
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      // Zebra-Streifen
+      &:nth-child(even) {
+        background: rgba(59, 130, 246, 0.05); // Bläulicher Hintergrund für bessere Sichtbarkeit
+      }
+      
+      // Hover-Effekt
+      &:hover {
+        background: rgba(59, 130, 246, 0.15); // Helleres Blau für bessere Sichtbarkeit
+        transform: translateY(-2px); // Leichte Bewegung für besseres Feedback
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); // Schatten für 3D-Effekt
+        z-index: 1; // Über anderen Zeilen
+      }
+    }
+  }
+  
+  td {
+    padding: 1rem 1.5rem; // Mehr Padding für bessere Lesbarkeit
+    color: #ffffff; // Reinweiß für maximalen Kontrast
+    font-size: 1rem; // Größere Schrift
+    position: relative; // Für Animationen
+    transition: all var(--transition-normal);
+    
+    // Hervorgehobene Zellen
+    &.highlight {
+      background: rgba(59, 130, 246, 0.1); // Bläulicher Hintergrund
+      font-weight: 600; // Fettere Schrift
+    }
+    
+    // Erfolg, Warnung, Fehler
+    &.success {
+      color: #4ade80; // Helleres Grün
+    }
+    
+    &.warning {
+      color: #fbbf24; // Helleres Gelb
+    }
+    
+    &.error {
+      color: #f87171; // Helleres Rot
+    }
+  }
+  
+  // Responsive Tabellen
+  @media (max-width: 768px) {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    
+    th, td {
+      white-space: nowrap; // Verhindert Zeilenumbrüche
+    }
+  }
+}
+
+// Verbesserte Code-Blöcke für Dark Mode mit höherem Kontrast und Animationen
+pre, code {
+  background: #1a1a3a; // Dunklerer, aber noch sichtbarer Hintergrund mit mehr Blau
+  border: 1px solid rgba(59, 130, 246, 0.3); // Bläulicher Rand für bessere Sichtbarkeit
+  color: #93c5fd; // Helleres Blau für bessere Lesbarkeit
+  border-radius: 8px; // Stärker abgerundete Ecken
+  padding: 0.3em 0.6em; // Mehr Padding für bessere Lesbarkeit
+  font-size: 0.95em; // Größere Schrift
+  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace; // Bessere Monospace-Schrift
+  letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Subtiler Schatten für 3D-Effekt
+  
+  // Verbesserte Syntax-Hervorhebung mit helleren, gesättigteren Farben
+  .keyword { color: #a5b4fc; } // Helleres Lila
+  .string { color: #86efac; }  // Helleres Grün
+  .comment { color: #d1d5db; } // Helleres Grau für bessere Lesbarkeit
+  .number { color: #fca5a5; }  // Helleres Rot
+  .operator { color: #f9a8d4; } // Helleres Pink
+  .function { color: #93c5fd; } // Helleres Blau
+  .property { color: #60a5fa; } // Helleres Blau
+  .tag { color: #f472b6; } // Helleres Pink
+  .attr-name { color: #fbbf24; } // Helleres Gelb
+  .attr-value { color: #86efac; } // Helleres Grün
+  .punctuation { color: #e5e7eb; } // Helleres Grau
+  .class-name { color: #c084fc; } // Helleres Lila
+  .variable { color: #60a5fa; } // Helleres Blau
+  .constant { color: #f472b6; } // Helleres Pink
+  .parameter { color: #fbbf24; } // Helleres Gelb
+  .builtin { color: #a5b4fc; } // Helleres Lila
+  .namespace { color: #d1d5db; } // Helleres Grau
+}
+
+// Verbesserte Code-Blöcke
+pre {
+  padding: 1.5rem; // Mehr Padding für bessere Lesbarkeit
+  overflow-x: auto;
+  line-height: 1.7; // Erhöhter Zeilenabstand für bessere Lesbarkeit
+  margin: 1.5rem 0; // Abstand oben und unten
+  position: relative; // Für Hintergrundeffekte
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3), 0 0 8px rgba(59, 130, 246, 0.2); // Stärkerer Schatten mit Glow
+  
+  // Subtiler Hintergrundeffekt
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  // Zeilennummern
+  &.line-numbers {
+    counter-reset: line;
+    padding-left: 3.5rem; // Platz für Zeilennummern
+    
+    // Zeilennummern-Bereich
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 3rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-right: 1px solid rgba(59, 130, 246, 0.2);
+      z-index: 1;
+    }
+    
+    // Einzelne Zeilen
+    .line {
+      position: relative;
+      display: block;
+      
+      // Zeilennummern
+      &::before {
+        counter-increment: line;
+        content: counter(line);
+        position: absolute;
+        left: -3rem;
+        width: 2.5rem;
+        text-align: right;
+        color: #9ca3af; // Helleres Grau
+        font-size: 0.8em;
+        padding-right: 0.5rem;
+        user-select: none;
+        z-index: 2;
+      }
+      
+      // Hervorgehobene Zeilen
+      &.highlight {
+        background: rgba(59, 130, 246, 0.1); // Bläulicher Hintergrund
+        margin: 0 -1.5rem;
+        padding: 0 1.5rem;
+        border-left: 3px solid #3b82f6; // Blaue Markierung
+      }
+    }
+  }
+  
+  code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+    position: relative; // Für Animationen
+    z-index: 1; // Über dem Hintergrundeffekt
+  }
+  
+  // Kopierbutton
+  .copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(59, 130, 246, 0.2);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    z-index: 2;
+    
+    &:hover {
+      background: rgba(59, 130, 246, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+    
+    &.copied {
+      background: rgba(74, 222, 128, 0.4);
+      
+      &::after {
+        content: '✓';
+        margin-left: 0.3rem;
+      }
+    }
+  }
+  
+  // Sprachkennzeichnung
+  .language-tag {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: rgba(59, 130, 246, 0.2);
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    z-index: 2;
+    user-select: none;
+  }
+}
+
+// Verbesserte Tooltips für Dark Mode mit Animationen
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+  
+  &::before, &::after {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+  }
+  
+  // Tooltip-Text
+  &::after {
+    content: attr(data-tooltip);
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #1e1e46; // Dunklerer, aber noch sichtbarer Hintergrund mit mehr Blau
+    color: #ffffff; // Reinweiß für maximalen Kontrast
+    border: 1px solid rgba(59, 130, 246, 0.3); // Bläulicher Rand für bessere Sichtbarkeit
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(59, 130, 246, 0.2); // Stärkerer Schatten mit Glow
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    font-weight: 500; // Etwas fettere Schrift für bessere Lesbarkeit
+    letter-spacing: 0.01em; // Leicht erhöhter Buchstabenabstand
+    backdrop-filter: blur(10px); // Blur-Effekt
+  }
+  
+  // Tooltip-Pfeil
+  &::before {
+    content: '';
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    border: 6px solid transparent;
+    border-top-color: rgba(59, 130, 246, 0.3); // Bläulicher Rand für bessere Sichtbarkeit
+    margin-bottom: -12px;
+  }
+  
+  // Tooltip anzeigen
+  &:hover::before, &:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  // Große Tooltips
+  &[data-tooltip-large]::after {
+    width: 200px;
+    white-space: normal;
+    text-align: center;
+  }
+  
+  // Tooltip-Positionen
+  &[data-tooltip-position="left"]::after {
+    left: auto;
+    right: 100%;
+    bottom: 50%;
+    transform: translateY(50%) translateX(-10px);
+    margin-right: 10px;
+  }
+  
+  &[data-tooltip-position="left"]:hover::after {
+    transform: translateY(50%) translateX(0);
+  }
+  
+  &[data-tooltip-position="left"]::before {
+    left: auto;
+    right: 100%;
+    bottom: 50%;
+    transform: translateY(50%) translateX(-10px);
+    margin-right: 4px;
+    border-top-color: transparent;
+    border-left-color: rgba(59, 130, 246, 0.3);
+    margin-bottom: 0;
+  }
+  
+  &[data-tooltip-position="left"]:hover::before {
+    transform: translateY(50%) translateX(0);
+  }
+  
+  &[data-tooltip-position="right"]::after {
+    left: 100%;
+    bottom: 50%;
+    transform: translateY(50%) translateX(10px);
+    margin-left: 10px;
+  }
+  
+  &[data-tooltip-position="right"]:hover::after {
+    transform: translateY(50%) translateX(0);
+  }
+  
+  &[data-tooltip-position="right"]::before {
+    left: 100%;
+    bottom: 50%;
+    transform: translateY(50%) translateX(10px);
+    margin-left: 4px;
+    border-top-color: transparent;
+    border-right-color: rgba(59, 130, 246, 0.3);
+    margin-bottom: 0;
+  }
+  
+  &[data-tooltip-position="right"]:hover::before {
+    transform: translateY(50%) translateX(0);
+  }
+  
+  &[data-tooltip-position="bottom"]::after {
+    bottom: auto;
+    top: 125%;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  
+  &[data-tooltip-position="bottom"]:hover::after {
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  &[data-tooltip-position="bottom"]::before {
+    bottom: auto;
+    top: 125%;
+    transform: translateX(-50%) translateY(-10px);
+    border-top-color: transparent;
+    border-bottom-color: rgba(59, 130, 246, 0.3);
+    margin-bottom: 0;
+    margin-top: -12px;
+  }
+  
+  &[data-tooltip-position="bottom"]:hover::before {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Verbesserte Links für Dark Mode mit höherem Kontrast und Animationen
+a {
+  color: #60a5fa; // Helleres Blau für bessere Sichtbarkeit
+  transition: all var(--transition-normal);
+  text-underline-offset: 0.3em; // Größerer Abstand der Unterstreichung vom Text
+  text-decoration-thickness: 1px; // Dünnere Unterstreichung im Normalzustand
+  position: relative; // Für Animationen
+  font-weight: 500; // Etwas fettere Schrift für bessere Lesbarkeit
+  
+  // Moderner Unterstreichungseffekt
+  &:not(.btn):not(.nav-link):not(.no-underline) {
+    text-decoration: none; // Entfernt die Standard-Unterstreichung
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+  
+  &:hover {
+    color: #93c5fd; // Noch helleres Blau beim Hover
+    text-shadow: 0 0 8px rgba(59, 130, 246, 0.3); // Subtiler Glow-Effekt
+  }
+  
+  &:focus {
+    outline: 2px solid #3b82f6; // Deutlicher Fokus-Outline
+    outline-offset: 4px; // Größerer Abstand des Outlines
+    border-radius: 2px; // Leicht abgerundete Ecken des Outlines
+  }
+  
+  // Externe Links
+  &[target="_blank"] {
+    &::after {
+      content: '↗';
+      display: inline-block;
+      margin-left: 0.2em;
+      font-size: 0.8em;
+      vertical-align: super;
+      opacity: 0.7;
+      transition: all var(--transition-normal);
+    }
+    
+    &:hover::after {
+      opacity: 1;
+      transform: translateX(2px) translateY(-2px);
+    }
+  }
+  
+  // Verschiedene Link-Typen
+  &.link-accent {
+    color: #c084fc; // Helleres Lila
+    
+    &:hover {
+      color: #d8b4fe; // Noch helleres Lila
+      text-shadow: 0 0 8px rgba(168, 85, 247, 0.3); // Subtiler Glow-Effekt
+    }
+  }
+  
+  &.link-success {
+    color: #4ade80; // Helleres Grün
+    
+    &:hover {
+      color: #86efac; // Noch helleres Grün
+      text-shadow: 0 0 8px rgba(74, 222, 128, 0.3); // Subtiler Glow-Effekt
+    }
+  }
+  
+  &.link-warning {
+    color: #fbbf24; // Helleres Gelb
+    
+    &:hover {
+      color: #fcd34d; // Noch helleres Gelb
+      text-shadow: 0 0 8px rgba(251, 191, 36, 0.3); // Subtiler Glow-Effekt
+    }
+  }
+  
+  &.link-error {
+    color: #f87171; // Helleres Rot
+    
+    &:hover {
+      color: #fca5a5; // Noch helleres Rot
+      text-shadow: 0 0 8px rgba(248, 113, 113, 0.3); // Subtiler Glow-Effekt
+    }
+  }
+}
+
+// Verbesserte Navigationsleiste für Dark Mode mit höherem Kontrast und Animationen
+nav {
+  background: rgba(10, 10, 20, 0.95); // Höhere Opazität für bessere Lesbarkeit
+  backdrop-filter: blur(15px); // Stärkerer Blur-Effekt
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3); // Bläulicher Rand für bessere Sichtbarkeit
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(59, 130, 246, 0.1); // Stärkerer Schatten mit Glow
+  position: relative; // Für Hintergrundeffekte
+  
+  // Subtiler Hintergrundeffekt
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 0%, rgba(168, 85, 247, 0.03) 100%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  // Alle Inhalte über dem Hintergrundeffekt
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  a {
+    color: #ffffff; // Reinweiß für maximalen Kontrast
+    font-weight: 600; // Fettere Schrift für bessere Lesbarkeit
+    padding: 0.6rem 1.2rem; // Mehr Padding für bessere Klickbarkeit
+    border-radius: 8px; // Stärker abgerundete Ecken
+    margin: 0 0.3rem; // Mehr Abstand zwischen Links
+    transition: all var(--transition-normal);
+    position: relative; // Für Animationen
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Leichter Schatten für besseren Kontrast
+    
+    // Hover-Effekt
+    &:hover {
+      color: #ffffff; // Reinweiß für maximalen Kontrast
+      background: rgba(59, 130, 246, 0.4); // Helleres Blau mit höherer Opazität
+      transform: translateY(-2px); // Stärkere Bewegung für besseres Feedback
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); // Schatten mit Glow
+    }
+    
+    // Aktiver Link
+    &.active {
+      color: #ffffff; // Reinweiß für maximalen Kontrast
+      background: rgba(59, 130, 246, 0.5); // Noch helleres Blau für aktiven Link
+      font-weight: 700; // Fettere Schrift für aktiven Link
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); // Stärkerer Schatten mit Glow
+      
+      // Unterstreichung für aktiven Link
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6); // Farbverlauf für die Unterstreichung
+        border-radius: var(--radius-full);
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); // Glow-Effekt
+      }
+    }
+    
+    // Animierter Unterstreichungseffekt
+    &:not(.active)::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6); // Farbverlauf für die Unterstreichung
+      border-radius: var(--radius-full);
+      transition: all var(--transition-normal);
+      transform: translateX(-50%);
+    }
+    
+    &:not(.active):hover::after {
+      width: 80%;
+    }
+  }
+  
+  // Dropdown-Menüs
+  .dropdown {
+    position: relative;
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #1a1a3a; // Dunklerer, aber noch sichtbarer Hintergrund mit mehr Blau
+      border: 1px solid rgba(59, 130, 246, 0.3); // Bläulicher Rand für bessere Sichtbarkeit
+      border-radius: 8px; // Stärker abgerundete Ecken
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 10px rgba(59, 130, 246, 0.2); // Stärkerer Schatten mit Glow
+      padding: 0.5rem;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all var(--transition-normal);
+      z-index: 100;
+      
+      a {
+        display: block;
+        padding: 0.7rem 1rem;
+        margin: 0.2rem 0;
+        border-radius: 6px;
+        
+        &:hover {
+          background: rgba(59, 130, 246, 0.3); // Helleres Blau mit höherer Opazität
+          transform: translateY(0) translateX(5px); // Bewegung nach rechts statt nach oben
+        }
+      }
+    }
+    
+    &:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+  
+  // Mobile Navigation
+  .mobile-menu-button {
+    background: rgba(59, 130, 246, 0.2); // Bläulicher Hintergrund
+    color: #ffffff; // Reinweiß für maximalen Kontrast
+    border: none;
+    border-radius: 8px; // Stärker abgerundete Ecken
+    padding: 0.6rem;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    
+    &:hover {
+      background: rgba(59, 130, 246, 0.4); // Helleres Blau beim Hover
+      transform: translateY(-2px); // Leichte Bewegung für besseres Feedback
+    }
+    
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background: #ffffff; // Reinweiß für maximalen Kontrast
+      transition: all var(--transition-normal);
+    }
+    
+    &.active {
+      .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// Verbesserte Footer für Dark Mode
+footer {
+  background: var(--footer-bg);
+  border-top: 1px solid var(--border);
+  
+  a {
+    color: var(--gray-400);
+    
+    &:hover {
+      color: var(--primary-400);
+    }
+  }
+}
+
+// Verbesserte Icons für Dark Mode
+.icon {
+  color: var(--gray-400);
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    color: var(--primary-400);
+    transform: scale(1.1);
+  }
+}
+
+// Verbesserte Helden-Sektion für Dark Mode
+.hero {
+  background: var(--hero-bg);
+  
+  h1 {
+    background: linear-gradient(135deg, var(--primary-400), var(--accent-400));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// Verbesserte Bilder für Dark Mode
+img {
+  filter: brightness(0.9) contrast(1.1);
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    filter: brightness(1) contrast(1.1);
+  }
+}
+
+// Verbesserte Modals für Dark Mode
+.modal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  
+  .modal-header {
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .modal-footer {
+    border-top: 1px solid var(--border);
+  }
+}
+
+// Verbesserte Alerts für Dark Mode
+.alert {
+  border: 1px solid var(--border);
+  
+  &.alert-info {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: rgba(37, 99, 235, 0.3);
+  }
+  
+  &.alert-success {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+  
+  &.alert-warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+  
+  &.alert-error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+}
