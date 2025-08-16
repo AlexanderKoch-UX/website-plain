@@ -1,8 +1,34 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import Layout from '@/components/Layout/Layout';
 import styles from '@/styles/pages/LegalPages.module.scss';
 
 const DatenschutzPage: React.FC = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' }
+    }
+  };
+
   return (
     <Layout
       title="Datenschutzerklärung | Alexander Koch - Full-Stack Entwickler"
@@ -11,16 +37,22 @@ const DatenschutzPage: React.FC = () => {
     >
       <section className={styles.legalPage}>
         <div className={styles.container}>
-          <div className={styles.contentCard}>
-            <div className={styles.pageHeader}>
+          <motion.div 
+            ref={ref}
+            className={styles.contentCard}
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+          >
+            <motion.div className={styles.pageHeader} variants={itemVariants}>
               <h1 className={styles.pageTitle}>Datenschutzerklärung</h1>
               <p className={styles.pageSubtitle}>
                 Informationen zum Umgang mit Ihren personenbezogenen Daten gemäß DSGVO
               </p>
-            </div>
+            </motion.div>
             
             {/* Privacy Overview Section */}
-            <div className={styles.section}>
+            <motion.div className={styles.section} variants={itemVariants}>
               <h2 className={styles.sectionTitle}>1. Datenschutz auf einen Blick</h2>
               
               <div className={styles.contentBox}>
@@ -59,7 +91,7 @@ const DatenschutzPage: React.FC = () => {
                   </p>
                 </div>
               ))}
-            </div>
+            </motion.div>
               
             {/* Main Privacy Sections */}
             {[
@@ -129,7 +161,7 @@ const DatenschutzPage: React.FC = () => {
                 ]
               }
             ].map((section, sectionIndex) => (
-              <div key={sectionIndex} className={styles.section}>
+              <motion.div key={sectionIndex} className={styles.section} variants={itemVariants}>
                 <h2 className={styles.sectionTitle}>{section.title}</h2>
                 
                 {section.subsections.map((subsection, subIndex) => (
@@ -153,11 +185,11 @@ const DatenschutzPage: React.FC = () => {
                     )}
                   </div>
                 ))}
-              </div>
+              </motion.div>
             ))}
               
             {/* Contact Information */}
-            <div className={styles.section}>
+            <motion.div className={styles.section} variants={itemVariants}>
               <h2 className={styles.sectionTitle}>6. Verantwortliche Stelle</h2>
               <div className={styles.contactInfo}>
                 <h3>Verantwortliche Stelle</h3>
@@ -174,10 +206,10 @@ const DatenschutzPage: React.FC = () => {
                   Verantwortliche Stelle ist die natürliche Person, die allein über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
             {/* Rights Section */}
-            <div className={styles.section}>
+            <motion.div className={styles.section} variants={itemVariants}>
               <h2 className={styles.sectionTitle}>7. Ihre Rechte</h2>
               <div className={styles.contentBox}>
                 <h3 className={styles.subsectionTitle}>Ihre Rechte nach der DSGVO</h3>
@@ -202,15 +234,15 @@ const DatenschutzPage: React.FC = () => {
                   Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde zu.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
             {/* Last Updated */}
-            <div className={styles.updateInfo}>
+            <motion.div className={styles.updateInfo} variants={itemVariants}>
               <p>
                 <strong>Letzte Aktualisierung: </strong>Januar 2025
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </Layout>

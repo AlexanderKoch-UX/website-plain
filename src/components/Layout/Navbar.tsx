@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
   { href: '#services', label: 'Leistungen' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projekte' },
-  { href: '#packages', label: 'Pakete' },
+  { href: '#system-experience', label: 'Systeme' },
   { href: '#contact', label: 'Kontakt' }
 ];
 
@@ -37,7 +37,6 @@ const Navbar: React.FC = () => {
 
         sections.forEach((section) => {
           const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
           if (window.scrollY >= sectionTop - 200) {
             current = section.getAttribute('id') || 'home';
           }
@@ -102,9 +101,9 @@ const Navbar: React.FC = () => {
               </Link>
             </div>
 
-            <div className={`${styles.navMenu} ${isMenuOpen ? styles.active : ''} stagger-children`}>
+            <div className={`${styles.navMenu} ${isMenuOpen ? styles.active : ''}`}>
               {navItems.map((item) => {
-                let isActive = false;
+                let isActive;
 
                 if (item.href.startsWith('#')) {
                   // For hash links, only show as active if we're on the main page and the section is active

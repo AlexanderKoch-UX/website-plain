@@ -5,7 +5,7 @@ import Services from '@/components/Sections/Services';
 import Skills from '@/components/Sections/Skills';
 import Projects from '@/components/Sections/Projects';
 import Testimonials from '@/components/Sections/Testimonials';
-import Packages from '@/components/Sections/Packages';
+import SystemExperience from '@/components/Sections/SystemExperience';
 import AdditionalServices from '@/components/Sections/AdditionalServices';
 import Contact from '@/components/Sections/Contact';
 
@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
       <Skills />
       <Projects />
       <Testimonials />
-      <Packages />
+      <SystemExperience />
       <AdditionalServices />
       <Contact />
     </Layout>

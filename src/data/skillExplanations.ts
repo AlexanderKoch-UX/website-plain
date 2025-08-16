@@ -43,10 +43,7 @@ export const skillExplanations: SkillExplanation[] = [
     term: 'E-Commerce Lösungen',
     explanation: 'E-Commerce Lösungen sind Webplattformen, die Online-Verkäufe ermöglichen. Sie umfassen Produktkataloge, Warenkorb-Funktionen, Zahlungsgateways, Bestandsverwaltung und Kundenverwaltungssysteme.'
   },
-  {
-    term: 'Content Management Systeme',
-    explanation: 'Content Management Systeme (CMS) ermöglichen es Benutzern ohne technische Kenntnisse, Inhalte auf einer Website zu erstellen, zu bearbeiten und zu verwalten. Beispiele sind WordPress, Drupal und headless CMS-Lösungen.'
-  },
+
   {
     term: 'Progressive Web Apps',
     explanation: 'Progressive Web Apps (PWAs) sind Webanwendungen, die wie native Apps funktionieren. Sie bieten Offline-Funktionalität, Push-Benachrichtigungen, schnelle Ladezeiten und können auf dem Startbildschirm installiert werden.'

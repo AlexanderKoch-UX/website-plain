@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollToTop from '../ScrollToTop';
+import CookieBanner from '../UI/CookieBanner';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { GlossaryProvider } from '@/contexts/GlossaryContext';
 import GlossaryModal from '../GlossaryModal';
@@ -76,6 +77,7 @@ const Layout: React.FC<LayoutProps> = ({
       <main>{children}</main>
       <Footer />
       <ScrollToTop />
+      <CookieBanner />
       <GlossaryModal />
     </GlossaryProvider>
   );

@@ -1,8 +1,34 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import Layout from '@/components/Layout/Layout';
 import styles from '@/styles/pages/LegalPages.module.scss';
 
 const ImpressumPage: React.FC = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' }
+    }
+  };
+
   return (
     <Layout
       title="Impressum | Alexander Koch - Full-Stack Entwickler"
@@ -11,15 +37,21 @@ const ImpressumPage: React.FC = () => {
     >
       <section className={styles.legalPage}>
         <div className={styles.container}>
-          <div className={styles.contentCard}>
-            <div className={styles.pageHeader}>
+          <motion.div 
+            ref={ref}
+            className={styles.contentCard}
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+          >
+            <motion.div className={styles.pageHeader} variants={itemVariants}>
               <h1 className={styles.pageTitle}>Impressum</h1>
               <p className={styles.pageSubtitle}>
                 Rechtliche Informationen gemäß den gesetzlichen Bestimmungen
               </p>
-            </div>
+            </motion.div>
             
-            <div className={styles.section}>
+            <motion.div className={styles.section} variants={itemVariants}>
               <h2 className={styles.sectionTitle}>Angaben gemäß § 5 TMG</h2>
               
               <div className={styles.contentBox}>
@@ -43,7 +75,7 @@ const ImpressumPage: React.FC = () => {
                   </a>
                 </p>
               </div>
-            </div>
+            </motion.div>
               
             {/* Legal Sections */}
             {[
@@ -69,7 +101,7 @@ const ImpressumPage: React.FC = () => {
                   ]
                 }
               ].map((section, index) => (
-                <div key={index} className={styles.section}>
+                <motion.div key={index} className={styles.section} variants={itemVariants}>
                   <h2 className={styles.sectionTitle}>{section.title}</h2>
                   <div className={styles.contentBox}>
                     {section.content.map((paragraph, pIndex) => (
@@ -78,10 +110,10 @@ const ImpressumPage: React.FC = () => {
                       </p>
                     ))}
                   </div>
-                </div>
+                </motion.div>
             ))}
             
-            <div className={styles.section}>
+            <motion.div className={styles.section} variants={itemVariants}>
               <h2 className={styles.sectionTitle}>Verwendete externe Dienste</h2>
               <div className={styles.contentBox}>
                 <p className={styles.textContent}>
@@ -96,9 +128,9 @@ const ImpressumPage: React.FC = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </motion.div>
             
-            <div className={styles.section}>
+            <motion.div className={styles.section} variants={itemVariants}>
               <h2 className={styles.sectionTitle}>Social Media Profile</h2>
               <div className={styles.contentBox}>
                 <p className={styles.textContent}>
@@ -122,14 +154,14 @@ const ImpressumPage: React.FC = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </motion.div>
             
-            <div className={styles.updateInfo}>
+            <motion.div className={styles.updateInfo} variants={itemVariants}>
               <p>
                 <strong>Letzte Aktualisierung: </strong>Januar 2025
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </Layout>

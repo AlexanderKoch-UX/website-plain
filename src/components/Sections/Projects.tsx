@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useGlossary } from '@/contexts/GlossaryContext';
 import { skillExplanations } from '@/data/skillExplanations';
-import { realProjects, systemExperience } from '@/data/projects';
+import { realProjects } from '@/data/projects';
 import AutoGlossary from '@/components/AutoGlossary';
 import styles from './Projects.module.scss';
 
@@ -147,67 +147,6 @@ const Projects: React.FC = () => {
               ))}
             </div>
           </motion.div>
-          
-          {/* System Experience Section */}
-          <div className={styles.systemExperience}>
-            {systemExperience.map((category, categoryIndex) => (
-              <motion.div 
-                key={categoryIndex} 
-                className={styles.categorySection}
-                variants={itemVariants}
-                custom={categoryIndex}
-              >
-                <motion.h3 className={styles.categoryTitle} variants={itemVariants}>
-                  {category.category}
-                </motion.h3>
-                
-                <div className={styles.systemsGrid}>
-                  {category.systems.map((system, systemIndex) => (
-                    <motion.div
-                      key={systemIndex}
-                      className={styles.systemCard}
-                      variants={cardVariants}
-                      initial="hidden"
-                      animate={inView ? "visible" : "hidden"}
-                      custom={systemIndex}
-                      whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                    >
-                      <div className={styles.systemHeader}>
-                        <div className={styles.systemIcon}>
-                          <i className={system.icon}></i>
-                        </div>
-                        <h4 
-                          className={styles.systemName}
-                          onClick={() => handleTermClick(system.name)}
-                        >
-                          {system.name}
-                        </h4>
-                      </div>
-                      
-                      <p className={styles.systemDescription}>
-                        <AutoGlossary>{system.description}</AutoGlossary>
-                      </p>
-                      
-                      <div className={styles.systemTech}>
-                        <h5>Technologien</h5>
-                        <div className={styles.techTags}>
-                          {system.technologies.map((tech) => (
-                            <span 
-                              key={tech} 
-                              className={styles.techTag}
-                              onClick={() => handleTermClick(tech)}
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>
