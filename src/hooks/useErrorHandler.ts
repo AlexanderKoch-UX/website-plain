@@ -26,7 +26,7 @@ export const useErrorHandler = (): UseErrorHandlerReturn => {
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
-  const lastOperationRef = useRef<(() => Promise<any>) | null>(null);
+  const lastOperationRef = useRef<(() => Promise<unknown>) | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Cleanup timeout on unmount

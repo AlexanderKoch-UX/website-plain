@@ -130,8 +130,8 @@ export const useScrollAnimation = () => {
         clearAllTimeouts();
       });
 
-      // Set up a recurring check to ensure animations stay active
-      const intervalId = setInterval(activateScrollAnimations, 2000);
+      // Set up a less frequent recurring check to ensure animations stay active
+      const intervalId = setInterval(activateScrollAnimations, 5000);
 
       return () => {
         clearAllTimeouts();

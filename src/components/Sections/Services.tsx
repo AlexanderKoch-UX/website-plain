@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useGlossary } from '@/contexts/GlossaryContext';
 import { skillExplanations } from '@/data/skillExplanations';
-import { serviceAreas, marketingPoints } from '@/data/marketing';
+import { marketingPoints } from '@/data/marketing';
 import AutoGlossary from '@/components/AutoGlossary';
 import styles from './Services.module.scss';
 

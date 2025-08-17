@@ -23,19 +23,19 @@ const Footer: React.FC = () => {
           <div className={`${styles.footerSection} fade-in-up`}>
             <h4 className={styles.sectionTitle}>Navigation</h4>
             <div className={styles.quickLinks}>
-              <a href="#home" className={`${styles.quickLink} hover-lift`}>Home</a>
-              <a href="#services" className={`${styles.quickLink} hover-lift`}>Leistungen</a>
-              <a href="#projects" className={`${styles.quickLink} hover-lift`}>Projekte</a>
-              <a href="#contact" className={`${styles.quickLink} hover-lift`}>Kontakt</a>
+              <Link href="/#home" className={`${styles.quickLink} hover-lift`}>Home</Link>
+              <Link href="/#services" className={`${styles.quickLink} hover-lift`}>Leistungen</Link>
+              <Link href="/#projects" className={`${styles.quickLink} hover-lift`}>Projekte</Link>
+              <Link href="/#contact" className={`${styles.quickLink} hover-lift`}>Kontakt</Link>
             </div>
           </div>
         </div>
 
         {/* Decorative separator */}
         <div className={`${styles.footerDivider} animate-fade-in`}>
-          <div className={`${styles.dividerLine} animate-shimmer`}></div>
+          <div className={`${styles.dividerLine}`}></div>
           <div className={`${styles.dividerDot} animate-pulse`}></div>
-          <div className={`${styles.dividerLine} animate-shimmer`}></div>
+          <div className={`${styles.dividerLine}`}></div>
         </div>
 
         {/* Bottom section */}

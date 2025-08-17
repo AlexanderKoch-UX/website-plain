@@ -31,8 +31,8 @@ export const validatePackage = (pkg: unknown): pkg is Package => {
   return isString(p.name) && !isEmpty(p.name) &&
          isArray(p.beschreibung) &&
          isObject(p.preis) &&
-         isString((p.preis as any)?.einmalig) &&
-         isString((p.preis as any)?.hosting_vertrag);
+         isString((p.preis as Record<string, unknown>)?.einmalig) &&
+         isString((p.preis as Record<string, unknown>)?.hosting_vertrag);
 };
 
 export const validatePersonalInfo = (info: unknown): info is PersonalInfo => {
@@ -135,7 +135,7 @@ export const generateId = (): string => {
   return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 };
 
-export const handleDataError = (error: Error, context: string, fallback?: any) => {
+export const handleDataError = (error: Error, context: string, fallback?: unknown) => {
   console.error(`Data error in ${context}:`, error);
   return fallback || null;
 };
@@ -150,16 +150,16 @@ export const safeGetProperty = <T>(
     if (!isObject(obj)) return fallback;
     
     const keys = path.split('.');
-    let current: any = obj;
+    let current: unknown = obj;
     
     for (const key of keys) {
-      if (current === null || current === undefined || !(key in current)) {
+      if (current === null || current === undefined || !isObject(current) || !(key in current)) {
         return fallback;
       }
-      current = current[key];
+      current = (current as Record<string, unknown>)[key];
     }
     
-    return current !== undefined ? current : fallback;
+    return current !== undefined ? (current as T) : fallback;
   } catch {
     return fallback;
   }

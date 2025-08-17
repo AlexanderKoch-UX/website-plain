@@ -1,4 +1,4 @@
-import { MarketingPoint, ServiceArea, AboutSection } from '@/types';
+import { MarketingPoint, ServiceArea } from '@/types';
 
 export const marketingPoints: MarketingPoint[] = [
   {

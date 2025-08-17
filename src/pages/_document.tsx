@@ -9,15 +9,36 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
         
+        {/* DNS Prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+        
         {/* Fonts */}
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          />
+        </noscript>
         
         {/* Accessibility Widget Configuration */}
         <script
@@ -34,8 +55,12 @@ export default function Document() {
           }}
         />
         
-        {/* Accessibility Widget Script */}
-        <script src="/accessibility-widget.js" async></script>
+        {/* Accessibility Widget Script - Lazy loaded */}
+        <script 
+          src="/accessibility-widget.js" 
+          async 
+          defer
+        ></script>
       </Head>
       <body>
         <Main />

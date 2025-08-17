@@ -5,7 +5,7 @@ import Footer from './Footer';
 import ScrollToTop from '../ScrollToTop';
 import CookieBanner from '../UI/CookieBanner';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { GlossaryProvider } from '@/contexts/GlossaryContext';
+
 import GlossaryModal from '../GlossaryModal';
 
 interface LayoutProps {
@@ -24,7 +24,7 @@ const Layout: React.FC<LayoutProps> = ({
   // Automatically activate scroll animations for all pages
   useScrollAnimation();
   return (
-    <GlossaryProvider>
+    <>
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,11 +39,11 @@ const Layout: React.FC<LayoutProps> = ({
         {/* Canonical URL */}
         <link rel="canonical" href={canonical} />
         
-        {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        {/* Favicon - Optimized loading */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         
         {/* Fonts and stylesheets are now loaded in _document.tsx */}
@@ -79,7 +79,7 @@ const Layout: React.FC<LayoutProps> = ({
       <ScrollToTop />
       <CookieBanner />
       <GlossaryModal />
-    </GlossaryProvider>
+    </>
   );
 };
 

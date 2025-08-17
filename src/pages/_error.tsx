@@ -9,7 +9,7 @@ interface ErrorProps {
   err?: Error;
 }
 
-function Error({ statusCode, hasGetInitialPropsRun, err }: ErrorProps) {
+function Error({ statusCode, hasGetInitialPropsRun: _hasGetInitialPropsRun, err }: ErrorProps) {
   const getErrorMessage = () => {
     if (statusCode === 404) {
       return {

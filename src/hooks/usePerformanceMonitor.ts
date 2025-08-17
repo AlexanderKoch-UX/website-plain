@@ -64,8 +64,9 @@ export const usePerformanceMonitor = (): UsePerformanceMonitorReturn => {
             const clsObserver = new PerformanceObserver((list) => {
               let clsValue = 0;
               for (const entry of list.getEntries()) {
-                if (!(entry as any).hadRecentInput) {
-                  clsValue += (entry as any).value;
+                const layoutShiftEntry = entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number };
+                if (!layoutShiftEntry.hadRecentInput) {
+                  clsValue += layoutShiftEntry.value || 0;
                 }
               }
               metrics.cumulativeLayoutShift = clsValue;
@@ -75,7 +76,8 @@ export const usePerformanceMonitor = (): UsePerformanceMonitorReturn => {
             // First Input Delay
             const fidObserver = new PerformanceObserver((list) => {
               for (const entry of list.getEntries()) {
-                metrics.firstInputDelay = (entry as any).processingStart - entry.startTime;
+                const fidEntry = entry as PerformanceEntry & { processingStart?: number };
+                metrics.firstInputDelay = (fidEntry.processingStart || 0) - entry.startTime;
               }
             });
             fidObserver.observe({ entryTypes: ['first-input'] });

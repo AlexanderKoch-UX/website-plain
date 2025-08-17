@@ -74,14 +74,14 @@ const Hero: React.FC = () => {
               {personalInfo.description}
             </motion.p>
             <motion.div className={styles.heroButtons}>
-              <Link href="#services" className="button-primary">
+              <Link href="/#services" className="button-primary">
                 <i className="fas fa-code"></i>
                 Meine Leistungen
               </Link>
-              <a href="#contact" className="button-secondary">
+              <Link href="/#contact" className="button-secondary">
                 <i className="fas fa-comments"></i>
                 Kostenloses Beratungsgespräch
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
           
@@ -93,13 +93,17 @@ const Hero: React.FC = () => {
               <div className={styles.imageGlow}></div>
               <Image
                 src={personalInfo.image}
-                alt="Alexander Koch Profilbild"
+                alt="Alexander Koch - Full-Stack Entwickler & Digital Solutions Expert"
                 width={400}
                 height={400}
                 priority
-                quality={90}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgQRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bccXvdUTEfPvvn7aLvWVuFN9K90gp8pC0hOFLKCP2TsRF5vS5ixnr3/UUlQNETmhN36yC+kULcZCH02p22HEjrJtpdOaJu2Z8p6FUW0rPjDgjP6J8nq7DWqz1SWjgAaVFZTEwOgADrGu1vz4cOdVdNmjlTdFLd2bPnf8nEJKzqCt3IvCmvGt1O/5JKHqY72wXFJWE7jRW8uKCe9gHzLH+LfGQs8Kj4MQdBGmn2vkL/8Gn5SDp6urcTSAjd2Wjd9rlDsaYl4jnK0LXGDzV6aU8LHHC4aFO3UWr/WPQ="
+                quality={95}
+                sizes="(max-width: 768px) 280px, (max-width: 1200px) 350px, 400px"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '400px',
+                }}
                 className={styles.profileImage}
               />
             </div>

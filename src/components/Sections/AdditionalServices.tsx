@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useGlossary } from '@/contexts/GlossaryContext';
 import { additionalServices } from '@/data/packages';
+import { skillExplanations } from '@/data/skillExplanations';
 import AutoGlossary from '@/components/AutoGlossary';
 import styles from './AdditionalServices.module.scss';
 
@@ -47,9 +48,18 @@ const AdditionalServices: React.FC = () => {
     })
   };
 
+  // Funktion zum Finden der Erklärung für einen Begriff
+  const getExplanation = (term: string): string => {
+    const explanation = skillExplanations.find(
+      item => item.term.toLowerCase() === term.toLowerCase()
+    );
+    return explanation?.explanation || `${term} ist ein wichtiger Begriff in der Webentwicklung.`;
+  };
+
   // Funktion zum Anzeigen der Erklärung
   const handleTermClick = (term: string) => {
-    showExplanation(term, `${term} ist ein wichtiger Begriff in der Webentwicklung.`);
+    const explanation = getExplanation(term);
+    showExplanation(term, explanation);
   };
 
   return (

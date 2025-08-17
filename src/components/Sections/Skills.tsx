@@ -6,7 +6,6 @@ import { useInView } from 'react-intersection-observer';
 import { useGlossary } from '@/contexts/GlossaryContext';
 import { skills } from '@/data/skills';
 import { skillExplanations } from '@/data/skillExplanations';
-import { Skill } from '@/types';
 import styles from './Skills.module.scss';
 
 const Skills: React.FC = () => {

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useGlossary } from '@/contexts/GlossaryContext';
 import { systemExperience } from '@/data/systemExperience';
+import { skillExplanations } from '@/data/skillExplanations';
 import AutoGlossary from '@/components/AutoGlossary';
 import styles from './SystemExperience.module.scss';
 
@@ -35,8 +36,17 @@ const SystemExperience: React.FC = () => {
     }
   };
 
+  // Funktion zum Finden der Erklärung für einen Begriff
+  const getExplanation = (term: string): string => {
+    const explanation = skillExplanations.find(
+      item => item.term.toLowerCase() === term.toLowerCase()
+    );
+    return explanation?.explanation || `${term} ist eine wichtige Technologie in der Webentwicklung.`;
+  };
+
   const handleTermClick = (term: string) => {
-    showExplanation(term, `${term} ist ein wichtiger Begriff in der Webentwicklung.`);
+    const explanation = getExplanation(term);
+    showExplanation(term, explanation);
   };
 
   return (

@@ -60,42 +60,24 @@ export class ErrorHandler {
     this.errors = [];
   }
 
-  private static async sendToErrorService(error: AppError): Promise<void> {
-    // Placeholder for error service integration
-    // Example: Sentry, LogRocket, Bugsnag, etc.
-    /*
-    try {
-      await fetch('/api/errors', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(error),
-      });
-    } catch (err) {
-      console.error('Failed to send error to service:', err);
-    }
-    */
-  }
-
-  static handleAsyncError(promise: Promise<any>, context?: string): Promise<any> {
+  static handleAsyncError<T>(promise: Promise<T>, context?: string): Promise<T> {
     return promise.catch((error: Error) => {
       this.logError(error, undefined, context);
       throw error; // Re-throw to maintain original behavior
     });
   }
 
-  static wrapComponent<T extends any[]>(
-    fn: (...args: T) => any,
+  static wrapComponent<T extends unknown[], R>(
+    fn: (...args: T) => R,
     context?: string
-  ): (...args: T) => any {
+  ): (...args: T) => R {
     return (...args: T) => {
       try {
         const result = fn(...args);
         
         // Handle promises
-        if (result && typeof result.then === 'function') {
-          return this.handleAsyncError(result, context);
+        if (result && typeof (result as unknown as Promise<unknown>).then === 'function') {
+          return this.handleAsyncError(result as unknown as Promise<R>, context) as R;
         }
         
         return result;

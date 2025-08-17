@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
@@ -15,7 +21,8 @@ const nextConfig = {
   compress: true,
   experimental: {
     optimizeCss: true,
-    scrollRestoration: true
+    scrollRestoration: true,
+    optimizePackageImports: ['framer-motion', 'react-intersection-observer']
   },
   eslint: {
     dirs: ['src']
@@ -25,7 +32,29 @@ const nextConfig = {
   },
   env: {
     CUSTOM_KEY: 'alexanderkoch.dev'
+  },
+  // Performance optimizations
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
+  // Webpack optimizations
+  webpack: (config, { dev, isServer }) => {
+    // Optimize chunks in production
+    if (!dev && !isServer) {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      };
+    }
+    return config;
   }
 }
 
-module.exports = nextConfig
+export default bundleAnalyzer(nextConfig);

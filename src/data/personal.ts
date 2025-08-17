@@ -4,7 +4,7 @@ export const personalInfo: PersonalInfo = {
   name: 'Alexander Koch',
   title: 'Full-Stack Entwickler & Digital Solutions Expert',
   description: 'Ihr Partner für moderne Weblösungen. Mit über 6 Jahren Erfahrung entwickle ich maßgeschneiderte, zukunftssichere Anwendungen, die Ihr Unternehmen digital voranbringen. Von der ersten Idee bis zur erfolgreichen Umsetzung - alles aus einer Hand.',
-  image: '/android-chrome-512x512.png',
+  image: '/alexanderkoch.webp',
   contact: {
     email: 'alexanderkoch@uxnetwork.eu',
     phone: '+49 1575 3635132',

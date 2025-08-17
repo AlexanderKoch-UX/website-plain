@@ -242,7 +242,7 @@
 }
 
 // Dark Mode Styles
-:global(.dark-mode) {
+.dark-mode {
   .button-secondary {
     &:hover {
       background: rgba(37, 99, 235, 0.1);
